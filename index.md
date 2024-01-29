@@ -4,7 +4,7 @@ layout: default
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-[Link to another page](./post/1.spark-optimization.html).
+[Link to another page](./post/spark-optimization.html).
 
 There should be whitespace between paragraphs.
 
