@@ -10,7 +10,7 @@ When working with Spark, it is not only important to know how to transform data,
 
 When we talk about asymmetry, we talk about an unequal proportion of data between data partitions (we can find some partitions with a large amount of data and some with a low volume of data). Since the purpose of Spark is to perform a transformation in parallel on each partition, this issue can cause some processing threads to be underutilized.
 
-[Skewness](./images/spark-optimization/partition.png)
+![Skewness](../images/spark-optimization/partition.png)
 
 
 ```python
@@ -254,7 +254,7 @@ df_final.show()
 
 Spilling is the concept that refers to the act of moving RDD data from memory to disk and then returning the data back to memory. This process has a great impact, because it can affect system performance since access to data on disk is significantly slower than in memory. 
 
-[Memory Spill](./images/spark-optimization/spilling.png)
+![Memory Spill](../images/spark-optimization/spilling.png)
 
 This problem is usually caused by:
 
