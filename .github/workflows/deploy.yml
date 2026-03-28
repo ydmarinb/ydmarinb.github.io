@@ -55,7 +55,6 @@ jobs:
           cname: ydmarinb.github.io
           allow_empty_commit: false
           keep_files: true
-          verbose: true
       
       - name: Print deployment status
         run: echo "✅ Blog deployed to GitHub Pages!"
