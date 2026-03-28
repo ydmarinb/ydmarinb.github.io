@@ -53,8 +53,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           cname: ydmarinb.github.io
-          allow_empty_commit: false
-          keep_files: true
+          force_orphan: true
+          keep_files: false
       
       - name: Print deployment status
         run: echo "✅ Blog deployed to GitHub Pages!"
