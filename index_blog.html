@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,18 +41,46 @@
             <section class="posts-section">
 
             <div class="category">
-                <h2 class="category-title">Estadistica</h2>
+                <h2 class="category-title">Estadística</h2>
                 <ul class="posts-list">
-
+                    {% for post in site.estadistica %}
                     <li class="post-item">
                         <div>
-                            <a href="posts/estadistica_example_post.md" class="post-title">Example Post</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">This is an example notebook for testing the blog pipeline.</p>
+                            <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
                         </div>
-                        <span class="post-date">March 27, 2026</span>
                     </li>
-
+                    {% endfor %}
                 </ul>
+            </div>
+            
+            <div class="category">
+                <h2 class="category-title">Datos</h2>
+                <ul class="posts-list">
+                    {% for post in site.datos %}
+                    <li class="post-item">
+                        <div>
+                            <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="category">
+                <h2 class="category-title">Historia</h2>
+                {% assign categorias = site.historia | group_by: "subcategoria" %}
+                {% for categoria in categorias %}
+                  <h3 style="margin-top: 20px; font-size: 18px; color: #444;">Historia de {{ categoria.name | capitalize }}</h3>
+                  <ul class="posts-list">
+                      {% for post in categoria.items %}
+                      <li class="post-item">
+                          <div>
+                              <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+                          </div>
+                      </li>
+                      {% endfor %}
+                  </ul>
+                {% endfor %}
             </div>
 
             </section>
