@@ -410,3 +410,59 @@ pre[class*="language-"] {
 .token.function {
   color: var(--primary-color);
 }
+
+/* Academic Index Styling */
+.academic-index {
+  margin-top: 40px;
+  max-width: 800px;
+}
+
+.formal-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.formal-item {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eaeaea;
+  font-family: var(--font-family);
+}
+
+.formal-date {
+  color: #666;
+  font-size: 0.95rem;
+  min-width: 140px;
+  white-space: nowrap;
+}
+
+.formal-link {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.formal-link:hover {
+  color: #000;
+  border-bottom-color: var(--primary-color);
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.page-description {
+  color: #555;
+  font-size: 1.1rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+}

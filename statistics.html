@@ -1,0 +1,52 @@
+---
+layout: default
+title: Statistics
+lang: en
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">ydmarinb</a>
+                <ul>
+                    <li><a href="/historia.html">Historia</a></li>
+                    <li><a href="/statistics.html">Statistics</a></li>
+                    <li><a href="/data-engineering.html">Data Engineering</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container academic-index">
+            <h1 class="page-title">Statistics</h1>
+            <p class="page-description">Exploring statistical methods and probabilistic models.</p>
+
+            <ul class="formal-list">
+                {% assign sorted_posts = site.estadistica | sort: 'date' | reverse %}
+                {% for post in sorted_posts %}
+                    <li class="formal-item">
+                        <span class="formal-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                        <a href="{{ post.url }}" class="formal-link">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ydmarinb. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

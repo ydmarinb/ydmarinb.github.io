@@ -1,0 +1,55 @@
+---
+layout: default
+title: Historia de Colombia
+lang: es
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historia</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">ydmarinb</a>
+                <ul>
+                    <li><a href="/historia.html">Historia</a></li>
+                    <li><a href="/statistics.html">Statistics</a></li>
+                    <li><a href="/data-engineering.html">Data Engineering</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container academic-index">
+            <h1 class="page-title">Historia</h1>
+            <p class="page-description">Análisis históricos de Colombia a través de datos y visualización.</p>
+
+            <ul class="formal-list">
+                {% assign sorted_posts = site.historia | sort: 'date' | reverse %}
+                {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
+                
+                {% for post in sorted_posts %}
+                    {% assign m_index = post.date | date: "%-m" | minus: 1 %}
+                    <li class="formal-item">
+                        <span class="formal-date">
+                            {{ post.date | date: "%d" }} de {{ meses[m_index] }}, {{ post.date | date: "%Y" }}
+                        </span>
+                        <a href="{{ post.url }}" class="formal-link">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ydmarinb. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
