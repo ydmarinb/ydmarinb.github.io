@@ -38,54 +38,62 @@ jobs:
 
       - name: Convert ipynb to Markdown and Add Frontmatter
         run: |
-          mkdir -p _datos _estadistica _historia _notebooks
+          mkdir -p _datos _estadistica _historia
           
-          # Convertir notebooks a Markdown
-          shopt -s nullglob
-          for nb in _notebooks/*.ipynb; do
-            echo "Convirtiendo $nb..."
-            jupyter nbconvert --to markdown "$nb"
+          # Convertir notebooks a Markdown recursivamente
+          shopt -s globstar nullglob
+          for nb in notebooks/**/*.ipynb; do
+            if [ -f "$nb" ]; then
+              echo "Convirtiendo $nb..."
+              jupyter nbconvert --to markdown "$nb"
+            fi
           done
 
           # Mover archivos markdown y añadir frontmatter
-          for md in _notebooks/*.md; do
-            filename=$(basename "$md")
-            
-            # Asignar layout y carpeta destino
-            if [[ "$filename" == *"analisis"* ]]; then
-              target="_estadistica/$filename"
-              layout="estadistica"
-            else
-              target="_datos/$filename"
-              layout="datos"
+          for md in notebooks/**/*.md; do
+            if [ -f "$md" ]; then
+              filename=$(basename "$md")
+              
+              # Asignar layout y carpeta destino por nombre o por subcarpeta
+              if [[ "$md" == *"estadistica"* ]] || [[ "$filename" == *"analisis"* ]]; then
+                target="_estadistica/$filename"
+                layout="estadistica"
+              elif [[ "$md" == *"historia"* ]]; then
+                target="_historia/$filename"
+                layout="historia"
+              else
+                target="_datos/$filename"
+                layout="datos"
+              fi
+              
+              # Inyectar frontmatter dinámicamente en el archivo de destino
+              echo "---" > "$target"
+              echo "layout: $layout" >> "$target"
+              title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
+              echo "title: \"$title\"" >> "$target"
+              echo "---" >> "$target"
+              echo "" >> "$target"
+              
+              cat "$md" >> "$target"
+              
+              echo "Archivo movido a $target con layout: $layout"
+              
+              # Borrar el archivo markdown temporal
+              rm "$md"
             fi
-            
-            # Inyectar frontmatter dinámicamente en el archivo de destino
-            echo "---" > "$target"
-            echo "layout: $layout" >> "$target"
-            title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
-            echo "title: \"$title\"" >> "$target"
-            echo "---" >> "$target"
-            echo "" >> "$target"
-            
-            cat "$md" >> "$target"
-            
-            echo "Archivo movido a $target con layout: $layout"
-            
-            # Borrar el archivo markdown temporal
-            rm "$md"
           done
           
           # Mover recursos de los notebooks (imágenes) si nbconvert generó alguna carpeta
-          for folder in _notebooks/*_files; do
-            if [ -d "$folder" ]; then
+          for folder in notebooks/**/*_files/; do
+            if [ -d "${folder%/}" ]; then
+              true_folder="${folder%/}"
               mkdir -p assets/img/
-              cp -r "$folder" assets/img/
+              cp -r "$true_folder" assets/img/
               
               # Actualizar las referencias de imagenes en los archivos destino
-              for mdfile in _estadistica/*.md _datos/*.md; do
+              for mdfile in _estadistica/*.md _datos/*.md _historia/*.md _historia/**/*.md; do
                 if [ -f "$mdfile" ]; then
-                  sed -i "s|$(basename "$folder")/|/assets/img/$(basename "$folder")/|g" "$mdfile"
+                  sed -i "s|$(basename "$true_folder")/|/assets/img/$(basename "$true_folder")/|g" "$mdfile"
                 fi
               done
             fi
