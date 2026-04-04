@@ -1,60 +1,113 @@
-name: Build and Deploy Blog
+name: Deploy Jekyll with Notebooks
 
 on:
   push:
     branches:
-      - master
       - main
+      - master
+    paths-ignore:
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build_and_deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        python-version: ['3.11']
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-      
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
-      
+          python-version: '3.11'
+
       - name: Install Python dependencies
+        run: pip install jupyter nbconvert
+
+      - name: Convert ipynb to Markdown and Add Frontmatter
         run: |
-          python -m pip install --upgrade pip
-          pip install jupyter nbconvert
-      
-      - name: Make build script executable
-        run: chmod +x ./build.sh
-      
-      - name: Build blog
-        run: ./build.sh
-      
-      - name: Display build output
-        run: |
-          echo "Build completed successfully!"
-          echo "Files generated:"
-          find . -name "*.html" -o -name "*.md" | grep -E "(index_blog|posts)" | head -20
-      
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+          mkdir -p _datos _estadistica _historia _notebooks
+          
+          # Convertir notebooks a Markdown
+          shopt -s nullglob
+          for nb in _notebooks/*.ipynb; do
+            echo "Convirtiendo $nb..."
+            jupyter nbconvert --to markdown "$nb"
+          done
+
+          # Mover archivos markdown y añadir frontmatter
+          for md in _notebooks/*.md; do
+            filename=$(basename "$md")
+            
+            # Asignar layout y carpeta destino
+            if [[ "$filename" == *"analisis"* ]]; then
+              target="_estadistica/$filename"
+              layout="estadistica"
+            else
+              target="_datos/$filename"
+              layout="datos"
+            fi
+            
+            # Inyectar frontmatter dinámicamente en el archivo de destino
+            echo "---" > "$target"
+            echo "layout: $layout" >> "$target"
+            title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
+            echo "title: \"$title\"" >> "$target"
+            echo "---" >> "$target"
+            echo "" >> "$target"
+            
+            cat "$md" >> "$target"
+            
+            echo "Archivo movido a $target con layout: $layout"
+            
+            # Borrar el archivo markdown temporal
+            rm "$md"
+          done
+          
+          # Mover recursos de los notebooks (imágenes) si nbconvert generó alguna carpeta
+          for folder in _notebooks/*_files; do
+            if [ -d "$folder" ]; then
+              mkdir -p assets/img/
+              cp -r "$folder" assets/img/
+              
+              # Actualizar las referencias de imagenes en los archivos destino
+              for mdfile in _estadistica/*.md _datos/*.md; do
+                if [ -f "$mdfile" ]; then
+                  sed -i "s|$(basename "$folder")/|/assets/img/$(basename "$folder")/|g" "$mdfile"
+                fi
+              done
+            fi
+          done
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          cname: ydmarinb.github.io
-          force_orphan: true
-          keep_files: false
-      
-      - name: Print deployment status
-        run: echo "✅ Blog deployed to GitHub Pages!"
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build with Jekyll
+        run: bundle exec jekyll build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
