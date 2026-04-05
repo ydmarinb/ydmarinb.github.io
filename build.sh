@@ -107,29 +107,40 @@ for category in os.listdir(NOTEBOOKS_DIR):
     
     posts_by_category[category] = []
     
-    for file in os.listdir(category_path):
-        if file.endswith('.ipynb'):
-            nb_path = os.path.join(category_path, file)
-            md_filename = file.replace('.ipynb', '.md')
-            md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
-            
-            # Convert notebook to markdown
-            print(f"Converting {file}...")
-            if convert_notebook_to_markdown(nb_path, md_path):
-                # Get metadata
-                file_date = get_file_date(nb_path)
-                title = get_notebook_title(nb_path)
-                preview = extract_first_paragraph(md_path)
+    for root, _, files in os.walk(category_path):
+        for file in files:
+            if file.endswith('.ipynb'):
+                nb_path = os.path.join(root, file)
                 
-                posts_by_category[category].append({
-                    'title': title,
-                    'date': file_date,
-                    'date_str': file_date.strftime('%B %d, %Y'),
-                    'date_iso': file_date.isoformat(),
-                    'path': f"posts/{category}_{md_filename}",
-                    'preview': preview,
-                    'category': category
-                })
+                # Extract subtopic from relative path
+                rel_path = os.path.relpath(root, category_path)
+                if rel_path == '.' or not rel_path:
+                    subtopic = "General"
+                else:
+                    subtopic_raw = rel_path.split(os.sep)[0]
+                    subtopic = subtopic_raw.replace('-', ' ').replace('_', ' ').title()
+                
+                md_filename = file.replace('.ipynb', '.md')
+                md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
+                
+                # Convert notebook to markdown
+                print(f"Converting {file} from {root}...")
+                if convert_notebook_to_markdown(nb_path, md_path):
+                    # Get metadata
+                    file_date = get_file_date(nb_path)
+                    title = get_notebook_title(nb_path)
+                    preview = extract_first_paragraph(md_path)
+                    
+                    posts_by_category[category].append({
+                        'title': title,
+                        'date': file_date,
+                        'date_str': file_date.strftime('%B %d, %Y'),
+                        'date_iso': file_date.isoformat(),
+                        'path': f"posts/{category}_{md_filename}",
+                        'preview': preview,
+                        'category': category,
+                        'subtopic': subtopic
+                    })
 
 # Sort posts by date (descending) within each category
 for category in posts_by_category:

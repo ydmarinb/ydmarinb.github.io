@@ -73,6 +73,16 @@ jobs:
                 layout="data"
               fi
               
+              rel_dir="${dirname#notebooks/}"
+              top_cat=$(echo "$rel_dir" | cut -d'/' -f1)
+              subtopic_raw=$(echo "$rel_dir" | cut -s -d'/' -f2)
+              
+              if [ -z "$subtopic_raw" ]; then
+                subtopic="General"
+              else
+                subtopic=$(echo "$subtopic_raw" | tr '-' ' ' | tr '_' ' ' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+              fi
+              
               # Generate current date for Jekyll Sort compatibility
               DATE_TODAY=$(date "+%Y-%m-%d")
               
@@ -82,6 +92,7 @@ jobs:
               title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
               echo "title: \"$title\"" >> "$target"
               echo "date: $DATE_TODAY" >> "$target"
+              echo "subtopic: \"$subtopic\"" >> "$target"
               echo "---" >> "$target"
               echo "" >> "$target"
               
