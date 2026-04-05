@@ -12,9 +12,9 @@ collections:
   statistics:
     output: true
     permalink: /statistics/:path/
-  data_engineering:
+  datos:
     output: true
-    permalink: /data_engineering/:path/
+    permalink: /data-engineering/:path/
 
 # Defaults para inyectar variables automáticas
 defaults:
@@ -32,7 +32,7 @@ defaults:
       lang: "en"
   - scope:
       path: ""
-      type: data_engineering
+      type: datos
     values:
       layout: data
       lang: "en"

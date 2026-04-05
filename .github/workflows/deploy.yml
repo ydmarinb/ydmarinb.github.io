@@ -38,7 +38,7 @@ jobs:
 
       - name: Convert ipynb to Markdown and Add Frontmatter
         run: |
-          mkdir -p _data_engineering _statistics _historia
+          mkdir -p _datos _statistics _historia
           
           # Convertir notebooks a Markdown recursivamente
           shopt -s globstar nullglob
@@ -59,7 +59,7 @@ jobs:
                 target="_historia/$filename"
                 layout="historia"
               elif [[ "$dirname" == *"ingenieria"* ]] || [[ "$dirname" == *"data"* ]]; then
-                target="_data_engineering/$filename"
+                target="_datos/$filename"
                 layout="data"
               elif [[ "$dirname" == *"estadistica"* ]] || [[ "$dirname" == *"statistics"* ]]; then
                 target="_statistics/$filename"
@@ -68,7 +68,7 @@ jobs:
                 target="_statistics/$filename"
                 layout="statistics"
               else
-                target="_data_engineering/$filename"
+                target="_datos/$filename"
                 layout="data"
               fi
               
@@ -101,7 +101,7 @@ jobs:
               cp -r "$true_folder" assets/img/
               
               # Actualizar las referencias de imagenes en los archivos destino
-              for mdfile in _statistics/*.md _data_engineering/*.md _historia/*.md _historia/**/*.md; do
+              for mdfile in _statistics/*.md _datos/*.md _historia/*.md _historia/**/*.md; do
                 if [ -f "$mdfile" ]; then
                   sed -i "s|$(basename "$true_folder")/|/assets/img/$(basename "$true_folder")/|g" "$mdfile"
                 fi

@@ -29,7 +29,7 @@ lang: en
             <h1 class="microsite-title">Data Engineering</h1>
 
             <ul class="index-list">
-                {% assign sorted_posts = site.data_engineering | sort: 'date' | reverse %}
+                {% assign sorted_posts = site.datos | sort: 'date' | reverse %}
                 {% for post in sorted_posts %}
                     <li class="index-item">
                         <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
