@@ -29,19 +29,34 @@ lang: en
             <h1 class="microsite-title">Statistics</h1>
 
             {% assign grouped_posts = site.statistics | group_by: 'subtopic' %}
+            
+            {% for group in grouped_posts %}
+                {% if group.name == 'General' or group.name == '' or group.name == nil %}
+                    <ul class="index-list">
+                        {% assign sorted_posts = group.items | sort: 'date' | reverse %}
+                        {% for post in sorted_posts %}
+                            <li class="index-item">
+                                <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                                <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+
             {% for group in grouped_posts %}
                 {% if group.name != 'General' and group.name != '' and group.name != nil %}
                     <h2 class="subtopic-title" style="margin-top: 2rem; margin-bottom: 1rem; color: #444; border-bottom: 2px solid #eaeaea; padding-bottom: 5px; font-weight: normal; font-size: 1.5rem;">{{ group.name }}</h2>
+                    <ul class="index-list">
+                        {% assign sorted_posts = group.items | sort: 'date' | reverse %}
+                        {% for post in sorted_posts %}
+                            <li class="index-item">
+                                <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                                <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
-                <ul class="index-list">
-                    {% assign sorted_posts = group.items | sort: 'date' | reverse %}
-                    {% for post in sorted_posts %}
-                        <li class="index-item">
-                            <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
-                            <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
             {% endfor %}
         </div>
     </main>
