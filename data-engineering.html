@@ -10,31 +10,30 @@ lang: en
     <title>Data Engineering</title>
     <link rel="stylesheet" href="/assets/style.css">
 </head>
-<body>
-    <header>
+<body class="microsite-data">
+    <header class="microsite-header">
         <div class="container">
             <nav>
                 <a href="/" class="logo">ydmarinb</a>
                 <ul>
-                    <li><a href="/historia.html">Historia</a></li>
-                    <li><a href="/statistics.html">Statistics</a></li>
-                    <li><a href="/data-engineering.html">Data Engineering</a></li>
+                    <li><a href="/historia.html" class="nav-historia">Historia</a></li>
+                    <li><a href="/statistics.html" class="nav-statistics">Statistics</a></li>
+                    <li><a href="/data-engineering.html" class="nav-data">Data Engineering</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="container academic-index">
-            <h1 class="page-title">Data Engineering</h1>
-            <p class="page-description">Building scalable data infrastructure, ETL pipelines, and architecture.</p>
+        <div class="container microsite-index">
+            <h1 class="microsite-title">Data Engineering</h1>
 
-            <ul class="formal-list">
-                {% assign sorted_posts = site.datos | sort: 'date' | reverse %}
+            <ul class="index-list">
+                {% assign sorted_posts = site.data_engineering | sort: 'date' | reverse %}
                 {% for post in sorted_posts %}
-                    <li class="formal-item">
-                        <span class="formal-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                        <a href="{{ post.url }}" class="formal-link">{{ post.title }}</a>
+                    <li class="index-item">
+                        <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                        <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
                     </li>
                 {% endfor %}
             </ul>

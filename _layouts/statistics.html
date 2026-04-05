@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<div class="layout-statistics" style="font-family: 'Inter', 'Roboto', sans-serif; font-size: 16px; line-height: 1.7; color: #222; max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+  <article>
+    <header style="margin-bottom: 40px; border-bottom: 2px solid #0056b3; padding-bottom: 20px;">
+      <h1 style="color: #0056b3; font-size: 2.2rem; margin-bottom: 10px;">{{ page.title }}</h1>
+      <p style="color: #666; font-size: 0.95rem;">
+        {% if page.date %}
+          {{ page.date | date: "%B %d, %Y" }}
+        {% endif %}
+      </p>
+    </header>
+    <div class="content" style="overflow-x: auto;">
+      {{ content }}
+    </div>
+  </article>
+</div>

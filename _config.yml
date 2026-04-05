@@ -1,7 +1,7 @@
 # Configuración Básica
 url: "https://ydmarinb.github.io"
 baseurl: ""
-title: "Blog de Datos"
+title: "ydmarinb Analytics Blog"
 description: "Data Engineering, Statistics & Colombian History"
 
 # Colecciones
@@ -9,47 +9,32 @@ collections:
   historia:
     output: true
     permalink: /historia/:path/
-  estadistica:
+  statistics:
     output: true
     permalink: /statistics/:path/
-  datos:
+  data_engineering:
     output: true
-    permalink: /data-engineering/:path/
+    permalink: /data_engineering/:path/
 
-# Defaults para inyectar variables mágicas
+# Defaults para inyectar variables automáticas
 defaults:
   - scope:
       path: ""
       type: historia
     values:
-      layout: default
+      layout: historia
       lang: "es"
   - scope:
-      path: "_historia/antioquia"
-      type: historia
-    values:
-      subcategoria: "antioquia"
-  - scope:
-      path: "_historia/medellin"
-      type: historia
-    values:
-      subcategoria: "medellin"
-  - scope:
-      path: "_historia/colombia"
-      type: historia
-    values:
-      subcategoria: "colombia"
-  - scope:
       path: ""
-      type: estadistica
+      type: statistics
     values:
-      layout: default
+      layout: statistics
       lang: "en"
   - scope:
       path: ""
-      type: datos
+      type: data_engineering
     values:
-      layout: default
+      layout: data
       lang: "en"
 
 # Plugins a utilizar
@@ -57,7 +42,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Excluir la carpeta _notebooks u otras rutinas personalizadas
+# Excluir dependencias
 exclude:
   - _notebooks
   - .venv

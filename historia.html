@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Historia de Colombia
+title: Historia
 lang: es
 ---
 <!DOCTYPE html>
@@ -10,36 +10,35 @@ lang: es
     <title>Historia</title>
     <link rel="stylesheet" href="/assets/style.css">
 </head>
-<body>
-    <header>
+<body class="microsite-historia">
+    <header class="microsite-header">
         <div class="container">
             <nav>
                 <a href="/" class="logo">ydmarinb</a>
                 <ul>
-                    <li><a href="/historia.html">Historia</a></li>
-                    <li><a href="/statistics.html">Statistics</a></li>
-                    <li><a href="/data-engineering.html">Data Engineering</a></li>
+                    <li><a href="/historia.html" class="nav-historia">Historia</a></li>
+                    <li><a href="/statistics.html" class="nav-statistics">Statistics</a></li>
+                    <li><a href="/data-engineering.html" class="nav-data">Data Engineering</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="container academic-index">
-            <h1 class="page-title">Historia</h1>
-            <p class="page-description">Análisis históricos de Colombia a través de datos y visualización.</p>
-
-            <ul class="formal-list">
+        <div class="container microsite-index">
+            <h1 class="microsite-title">Historia</h1>
+            
+            <ul class="index-list">
                 {% assign sorted_posts = site.historia | sort: 'date' | reverse %}
                 {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
                 
                 {% for post in sorted_posts %}
                     {% assign m_index = post.date | date: "%-m" | minus: 1 %}
-                    <li class="formal-item">
-                        <span class="formal-date">
-                            {{ post.date | date: "%d" }} de {{ meses[m_index] }}, {{ post.date | date: "%Y" }}
+                    <li class="index-item">
+                        <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                        <span class="index-date">
+                            {{ post.date | date: "%d" }} de {{ meses[m_index] }} de {{ post.date | date: "%Y" }}
                         </span>
-                        <a href="{{ post.url }}" class="formal-link">{{ post.title }}</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+</head>
+<div class="layout-data" style="font-family: 'Inter', 'Roboto', sans-serif; font-size: 16px; line-height: 1.7; color: #333; max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+  <article>
+    <header style="margin-bottom: 40px; padding-bottom: 20px;">
+      <h1 style="color: #1a8754; font-size: 2.2rem; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; margin-bottom: 10px;">> {{ page.title }}</h1>
+      <p style="color: #666; font-size: 0.95rem;">
+        {% if page.date %}
+          [{{ page.date | date: "%B %d, %Y" }}]
+        {% endif %}
+      </p>
+    </header>
+    <div class="content">
+      {{ content }}
+    </div>
+  </article>
+</div>
+
+<style>
+/* Refuerzo estético para bloques de código estilo Data/Ingeniería */
+.layout-data pre {
+    background-color: #1e1e1e !important;
+    border-radius: 8px;
+    border-left: 4px solid #1a8754;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.layout-data code {
+    font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+    font-size: 14px;
+}
+</style>
