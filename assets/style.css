@@ -294,11 +294,11 @@ li {
 }
 
 /* Buttons */
-.btn {
+.btn, .btn:visited {
   display: inline-block;
   padding: 12px 24px;
   background-color: var(--primary-color);
-  color: white;
+  color: white !important;
   text-decoration: none;
   border-radius: 4px;
   font-weight: 600;
