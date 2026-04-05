@@ -451,6 +451,30 @@ pre[class*="language-"] {
   width: 100%;
 }
 
+/* Global Code Styling overrides (Prism & Rouge compatibility) */
+.content pre {
+  background-color: #1e1e1e !important;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow-x: auto;
+  color: #ccc;
+  border-left: 4px solid var(--primary-color);
+}
+
+.content code {
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+  font-size: 14px;
+}
+
+/* Fix inline code contrast against white background */
+.content p code, .content li code {
+  background-color: #f4f4f4 !important;
+  color: #c7254e;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
 /* Academic Index Styling */
 .academic-index {
   margin-top: 40px;
