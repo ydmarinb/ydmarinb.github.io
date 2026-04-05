@@ -1,10 +1,10 @@
-# Configuración Básica
+# Basic Configuration
 url: "https://ydmarinb.github.io"
 baseurl: ""
 title: "ydmarinb Analytics Blog"
 description: "Data Engineering, Statistics & Colombian History"
 
-# Colecciones
+# Collections
 collections:
   historia:
     output: true
@@ -16,7 +16,7 @@ collections:
     output: true
     permalink: /data-engineering/:path/
 
-# Defaults para inyectar variables automáticas
+# Defaults for automatic variable injection
 defaults:
   - scope:
       path: ""
@@ -37,12 +37,12 @@ defaults:
       layout: data
       lang: "en"
 
-# Plugins a utilizar
+# Active Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Excluir dependencias
+# Exclude dependencies
 exclude:
   - _notebooks
   - .venv

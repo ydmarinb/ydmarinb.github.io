@@ -1,332 +1,84 @@
-# ydmarinb.github.io - Personal Blog
+# ydmarinb.github.io - Advanced Analytics & History Microsite Platform
 
-A professional static blog built with Jupyter notebooks, automated with Python scripts, and deployed via GitHub Actions. Featuring data engineering articles, statistical analysis, and Colombian history explorations.
+A robust, fully automated static blog built natively with **Jekyll**, driven by **Jupyter Notebooks**, and orchestrated by a highly customized **GitHub Actions** CI/CD pipeline. The platform is architected into three distinct microsites, providing custom academic layouts, dynamic indexing, and zero-maintenance deployment.
 
-## 🎯 Features
+## 🎯 Platform Features
 
-- **Notebook-Driven**: Write posts as Jupyter notebooks (`.ipynb`)
-- **Automated Conversion**: Jupyter notebooks → Markdown → HTML via `build.sh`
-- **Dynamic Blog Index**: Automatic post discovery, categorization, and date sorting
-- **Professional Design**: Minimalist aesthetic with Prussian blue accents (#003366)
-- **Math Support**: MathJax for rendering LaTeX equations
-- **Code Highlighting**: Prism.js for syntax highlighting (Python, SQL, Scala)
-- **CI/CD Ready**: GitHub Actions automatically deploys on push to master
-- **Responsive Design**: Mobile-friendly layout
+- **"Zero-Maintenance" Publishing**: Write your posts directly as Jupyter notebooks (`.ipynb`) in specific directories. The system handles the rest.
+- **Smart Directory Routing**: Notebooks placed in specific directories (`historia-colombia`, `ingenieria-datos`, etc.) are automatically assigned to their respective microsite ecosystems and formatted with appropriate dates and metadata.
+- **Three Core Microsites**:
+  - **Historia**: A classical, serif-font ecosystem focused on Colombian History. Features localized Spanish date formats and a dark-red academic theme.
+  - **Statistics**: Features native KaTeX/MathJax support for advanced probabilistic models and high-quality equation rendering.
+  - **Data Engineering**: Focused on robust data infrastructure with deep-dark code styling and custom syntax highlights for Python/SQL/Scala.
+- **Hybrid Rendering Engines**: 
+  - *MathJax*: Seamless `LaTeX` execution across all articles.
+  - *PrismJs*: Custom syntax highlighting and dark-theming for native code blocks.
+- **CI/CD Ready**: The custom GitHub Actions pipeline (`deploy.yml`) handles everything from `nbconvert` processing to dynamic frontmatter injection upon every push to the `main` branch.
 
-## 📁 Project Structure
+## 📁 Repository Architecture
 
-```
+```text
 ydmarinb.github.io/
-├── index.html                      # Landing page (Home)
-├── index_blog.html                 # Auto-generated blog index
-├── build.sh                        # Build script (converts notebooks)
+├── index.html                      # Main landing page (Router Interface)
+├── _config.yml                     # Jekyll engine configuration & collections
 ├── assets/
-│   └── style.css                   # Minimalista professional CSS
-├── notebooks/                      # Source of truth
-│   ├── estadistica/                # Statistics posts
-│   │   └── introduction-to-statistical-distributions.ipynb
-│   ├── ingenieria-datos/           # Data engineering posts
-│   └── historia-colombia/          # Colombian history posts
-├── posts/                          # Generated markdown files (output)
+│   └── style.css                   # Global CSS tokens and variables
+├── _layouts/                       # Microsite specific templates
+│   ├── historia.html               # Merriweather Serif layout
+│   ├── statistics.html             # Inter Sans-serif layout
+│   └── data.html                   # Monaco/Fira Code developer layout
+├── notebooks/                      # SOURCE OF TRUTH (Your workspace)
+│   ├── estadistica/                # Target -> Statistics Microsite
+│   ├── ingenieria-datos/           # Target -> Data Engineering Microsite
+│   └── historia-colombia/          # Target -> History Microsite
 └── .github/workflows/
-    └── deploy.yml                  # GitHub Actions CI/CD pipeline
+    └── deploy.yml                  # The CI/CD engine that runs the magic
 ```
 
-## 🚀 Quick Start
+## 🚀 How to Publish a Post (Workflow)
 
-### 1. Prerequisites
+The platform is completely decoupled from Jekyll configuration. As a writer, you only interact with Jupyter Notebooks.
 
-Ensure you have the following installed:
+### 1. Write your Notebook
+Create standard Jupyter `.ipynb` notebooks locally using your editor of choice. You can combine Markdown, `$$LaTeX$$` equations, and Python code blocks.
+
+### 2. Save into a Category Directory
+Place your notebook directly into one of the designated folders inside `notebooks/`.
 
 ```bash
-# Python 3.11+
-python --version
+# For a History article:
+notebooks/historia-colombia/my_article.ipynb
 
-# macOS (Homebrew)
-brew install python jupyter pandoc
+# For a Statistics mathematical analysis:
+notebooks/estadistica/understanding_poisson.ipynb
 
-# Linux (Ubuntu/Debian)
-sudo apt-get install python3 python3-pip pandoc
-sudo pip install jupyter nbconvert
+# For Data Engineering architecture:
+notebooks/ingenieria-datos/etl_pipeline_design.ipynb
 ```
 
-### 2. Clone and Set Up
+### 3. Push to GitHub
+Simply add your files and push to `main`:
 
 ```bash
-# Clone the repository
-git clone https://github.com/ydmarinb/ydmarinb.github.io.git
-cd ydmarinb.github.io
-
-# Install Python dependencies
-pip install --upgrade pip
-pip install jupyter nbconvert
+git add notebooks/
+git commit -m "feat: added new poisson distribution analysis"
+git push origin main
 ```
 
-### 3. Build Locally
+**That's it.** The GitHub Action will immediately boot up, convert the `.ipynb` file to Markdown, inject the current system date via shell commands into the frontmatter, dispatch the markdown file to the hidden Jekyll collection folders (`_historia`, `_statistics`, `_datos`), extract image assets, compile the Jekyll site natively, and deploy the new index layouts automatically.
 
-```bash
-# Make build script executable
-chmod +x build.sh
+## 🎨 Theme & Technical Stack
 
-# Run the build process
-./build.sh
-```
+- **Code Engine**: Customized `PrismJS` loaded globally with a dark-node contrast theme for readability against white backgrounds.
+- **Math Engine**: Deep `MathJax 3.0` polyfill integration resolving `$..$` and `\[..\]` blocks.
+- **Frontend Logic**: Liquid Templating algorithms looping dynamically over native `site.collections`, reversing chronologically based on auto-injected Frontmatter dates.
 
-The script will:
-- ✅ Scan all `.ipynb` files in `/notebooks/` subdirectories
-- ✅ Convert them to Markdown using `jupyter nbconvert`
-- ✅ Extract file dates automatically
-- ✅ Generate `index_blog.html` with posts organized by category
-- ✅ Output Markdown files to `/posts/`
+## 📋 Troubleshooting Operations
 
-### 4. Preview Locally
-
-```bash
-# Option 1: Simple HTTP server (Python 3)
-python3 -m http.server 8000
-
-# Option 2: Using Live Server extension in VS Code
-# Install "Live Server" extension, then right-click index.html → "Open with Live Server"
-```
-
-Then open: `http://localhost:8000`
-
-## 📝 Writing Blog Posts
-
-### 1. Create a Notebook
-
-Create a new Jupyter notebook in the appropriate category:
-
-```bash
-# Example: New data engineering post
-touch notebooks/ingenieria-datos/my-new-post.ipynb
-
-# Or use Jupyter UI
-jupyter notebook notebooks/ingenieria-datos/
-```
-
-### 2. Add Metadata (Optional)
-
-For better control, add metadata to your notebook:
-
-```json
-{
-  "metadata": {
-    "title": "My Custom Post Title",
-    "author": "Your Name",
-    "date": "2026-03-27"
-  }
-}
-```
-
-### 3. Write Content
-
-Use standard Jupyter cells:
-- **Markdown cells** for text, headers, and equations
-- **Code cells** for Python, SQL, Scala examples
-- **Math support**: LaTeX equations with `$$...$$` (block) or `$...$` (inline)
-
-Example:
-
-```markdown
-# Post Title
-
-## Mathematics Example
-
-The normal distribution:
-$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
-
-## Code Example
-
-```python
-import pandas as pd
-df = pd.read_csv('data.csv')
-print(df.head())
-```
-```
-
-### 4. Build and Test
-
-```bash
-./build.sh
-```
-
-Check the generated `posts/` and `index_blog.html`
-
-## 🔧 Advanced Configuration
-
-### Customize CSS
-
-Edit `assets/style.css` to modify:
-- Colors (Prussian blue `#003366`)
-- Typography (Inter/Roboto font family)
-- Responsive breakpoints
-- MathJax and Prism.js styling
-
-### Modify Build Script
-
-The `build.sh` script uses a Python generator for flexibility. Edit the Python section for:
-- Category ordering
-- Date formatting
-- Post preview length
-- HTML template structure
-
-### Add New Categories
-
-1. Create a new subdirectory in `notebooks/`:
-   ```bash
-   mkdir notebooks/mi-nueva-categoria
-   ```
-
-2. Add notebooks there
-3. Run `./build.sh`
-4. Update category order in `build.sh` (Python section) if needed
-
-## 🚀 Deployment
-
-### GitHub Pages Automatic Deployment
-
-The repository includes GitHub Actions CI/CD. On every push to `master` branch:
-
-1. ✅ GitHub Actions checks out code
-2. ✅ Installs Python 3.11 + dependencies
-3. ✅ Runs `./build.sh` 
-4. ✅ Deploys to GitHub Pages (`gh-pages` branch)
-
-**No manual deployment needed!** Just push your changes:
-
-```bash
-git add .
-git commit -m "Add new blog post"
-git push origin master
-```
-
-View workflow status: https://github.com/ydmarinb/ydmarinb.github.io/actions
-
-### Manual Deployment
-
-If needed, manually build and commit:
-
-```bash
-./build.sh
-git add posts/ index_blog.html
-git commit -m "Update blog posts"
-git push origin master
-```
-
-## 📚 Example Post
-
-A sample post is included: `notebooks/estadistica/introduction-to-statistical-distributions.ipynb`
-
-It demonstrates:
-- LaTeX mathematical equations
-- Python code execution
-- matplotlib visualizations
-- SQL code examples
-- Prism.js syntax highlighting
-
-Build and view it:
-
-```bash
-./build.sh
-# Open index_blog.html in browser and click the post
-```
-
-## 🎨 Design Specifications
-
-### Color Scheme
-- **Primary**: Prussian Blue `#003366`
-- **Background**: Pure White `#ffffff`
-- **Text**: Dark Gray `#1a1a1a`
-- **Accents**: Light Gray `#f8f9fa`
-
-### Typography
-- **Headers**: Sans-serif (Inter, Roboto, system)
-- **Body**: Sans-serif (Inter, Roboto, system)
-- **Code**: Monospace (Monaco, Menlo, Ubuntu Mono)
-- **Line Height**: 1.6
-- **Max Width**: 900px
-
-### Responsive Design
-- Desktop: Full width (up to 900px container)
-- Tablet/Mobile: 768px breakpoint with adjusted typography
-
-## 📋 Troubleshooting
-
-### Issue: `jupyter nbconvert not found`
-
-**Solution:**
-```bash
-pip install jupyter nbconvert --upgrade
-```
-
-### Issue: `pandoc not found` (optional)
-
-**Solution:**
-```bash
-# macOS
-brew install pandoc
-
-# Ubuntu/Debian
-sudo apt-get install pandoc
-```
-
-### Issue: Build script fails
-
-**Solution:** Make sure script is executable:
-```bash
-chmod +x build.sh
-./build.sh
-```
-
-### Issue: Notebooks not converted
-
-**Solution:** Ensure notebooks are in correct structure:
-```bash
-ls notebooks/estadistica/
-# Should show: introduction-to-statistical-distributions.ipynb
-```
-
-### Issue: GitHub Pages not updating
-
-**Solution:** Check Actions tab in GitHub repo:
-1. Go to: https://github.com/ydmarinb/ydmarinb.github.io/actions
-2. Check if workflow succeeded
-3. Verify `gh-pages` branch exists
-4. Check GitHub Pages settings point to `gh-pages` branch
-
-## 📞 Support
-
-- **Jupyter Documentation**: https://jupyter.org/
-- **nbconvert Guide**: https://nbconvert.readthedocs.io/
-- **GitHub Pages**: https://pages.github.com/
-- **MathJax**: https://www.mathjax.org/
-- **Prism.js**: https://prismjs.com/
+If a notebook does not appear after waiting 90 seconds for GitHub Actions to compile:
+- **Routing Issue**: Ensure the folder you placed the notebook inside matches the Bash evaluation criteria in `.github/workflows/deploy.yml` (e.g., contains the word "historia", "estadistica", "ingenieria", or "data").
+- **Jekyll Cache**: Clear browser cache or ensure the CI/CD pipeline finished successfully in the "Actions" tab of GitHub.
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
-
----
-
-**Built with ❤️ | Jupyter + Python + GitHub Actions**
-   open index.html
-   ```
-
-## GitHub Actions
-- The blog is automatically deployed to GitHub Pages when changes are pushed to the `master` branch.
-- The workflow file `.github/workflows/deploy.yml` handles the deployment process.
-
-## Adding New Posts
-1. Place your Jupyter notebooks in the appropriate subfolder under `/notebooks` (e.g., `/notebooks/estadistica`).
-2. Run the build script to update the blog index:
-   ```bash
-   ./build.sh
-   ```
-3. Commit and push your changes to trigger the deployment.
-
-## Features
-- Minimalist design with responsive layout.
-- Support for MathJax (for equations) and Prism.js (for code syntax highlighting).
-- Automated conversion of Jupyter notebooks to markdown.
-- Dynamic blog index generation.
+This open-source micro-publishing architecture is provided under the MIT License. Built with ❤️ utilizing Jupyter, GitHub Actions & Jekyll.
