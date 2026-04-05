@@ -53,24 +53,34 @@ jobs:
           for md in notebooks/**/*.md; do
             if [ -f "$md" ]; then
               filename=$(basename "$md")
-              
-              # Asignar layout y carpeta destino por nombre o por subcarpeta
-              if [[ "$md" == *"estadistica"* ]] || [[ "$md" == *"statistics"* ]] || [[ "$filename" == *"analisis"* ]]; then
-                target="_statistics/$filename"
-                layout="statistics"
-              elif [[ "$md" == *"historia"* ]]; then
+              dirname=$(dirname "$md")
+              # Asignar layout y carpeta destino priorizando primero el nombre de la carpeta
+              if [[ "$dirname" == *"historia"* ]]; then
                 target="_historia/$filename"
                 layout="historia"
+              elif [[ "$dirname" == *"ingenieria"* ]] || [[ "$dirname" == *"data"* ]]; then
+                target="_data_engineering/$filename"
+                layout="data"
+              elif [[ "$dirname" == *"estadistica"* ]] || [[ "$dirname" == *"statistics"* ]]; then
+                target="_statistics/$filename"
+                layout="statistics"
+              elif [[ "$filename" == *"analisis"* ]] || [[ "$filename" == *"estadistica"* ]]; then
+                target="_statistics/$filename"
+                layout="statistics"
               else
                 target="_data_engineering/$filename"
                 layout="data"
               fi
+              
+              # Generar fecha de hoy para compatibilidad con Jekyll Sort
+              DATE_TODAY=$(date "+%Y-%m-%d")
               
               # Inyectar frontmatter dinámicamente en el archivo de destino
               echo "---" > "$target"
               echo "layout: $layout" >> "$target"
               title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
               echo "title: \"$title\"" >> "$target"
+              echo "date: $DATE_TODAY" >> "$target"
               echo "---" >> "$target"
               echo "" >> "$target"
               
