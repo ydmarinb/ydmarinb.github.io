@@ -25,7 +25,6 @@ ydmarinb.github.io/
 │   └── style.css                   # Global CSS tokens and variables
 ├── _layouts/                       # Microsite specific templates
 │   ├── historia.html               # Merriweather Serif layout
-│   ├── statistics.html             # Inter Sans-serif layout
 │   └── data.html                   # Monaco/Fira Code developer layout
 ├── notebooks/                      # SOURCE OF TRUTH (Your workspace)
 │   ├── estadistica/                # Target -> Statistics Microsite

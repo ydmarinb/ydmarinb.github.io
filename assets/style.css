@@ -532,10 +532,6 @@ pre[class*="language-"] {
   --primary-color: #c0392b; /* Rojo */
 }
 
-.microsite-statistics {
-  --primary-color: #0056b3; /* Azul */
-}
-
 .microsite-data {
   --primary-color: #1a8754; /* Verde */
 }

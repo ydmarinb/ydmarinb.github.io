@@ -12,9 +12,6 @@ collections:
   libros:
     output: true
     permalink: /libros/:path/
-  statistics:
-    output: true
-    permalink: /statistics/:path/
   datos:
     output: true
     permalink: /data-engineering/:path/
@@ -27,12 +24,6 @@ defaults:
     values:
       layout: historia
       lang: "es"
-  - scope:
-      path: ""
-      type: statistics
-    values:
-      layout: statistics
-      lang: "en"
   - scope:
       path: ""
       type: datos

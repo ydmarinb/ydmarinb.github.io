@@ -192,7 +192,7 @@ html_content = '''<!DOCTYPE html>
 '''
 
 # Add categories and posts
-category_order = ['ingenieria-datos', 'estadistica', 'historia-colombia', 'libros', 'historia']
+category_order = ['ingenieria-datos', 'historia-colombia', 'libros', 'historia']
 for cat in category_order:
     if cat in posts_by_category and posts_by_category[cat]:
         cat_display = cat.replace('-', ' ').title()
