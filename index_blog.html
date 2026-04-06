@@ -34,27 +34,14 @@
             <section style="margin-bottom: 60px;">
                 <h1>Blog</h1>
                 <p style="font-size: 18px; color: #555; margin-bottom: 30px;">
-                    Exploring data engineering, statistics, and Colombian history through analysis and visualization.
+                    Exploring data engineering and Colombian history through analysis and visualization.
                 </p>
             </section>
 
             <section class="posts-section">
 
             <div class="category">
-                <h2 class="category-title">Estadística</h2>
-                <ul class="posts-list">
-                    {% for post in site.estadistica %}
-                    <li class="post-item">
-                        <div>
-                            <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-            <div class="category">
-                <h2 class="category-title">Datos</h2>
+                <h2 class="category-title">Data Architecture</h2>
                 <ul class="posts-list">
                     {% for post in site.datos %}
                     <li class="post-item">
@@ -67,10 +54,10 @@
             </div>
             
             <div class="category">
-                <h2 class="category-title">Historia</h2>
+                <h2 class="category-title">El Algoritmo del Pasado</h2>
                 {% assign categorias = site.historia | group_by: "subcategoria" %}
                 {% for categoria in categorias %}
-                  <h3 style="margin-top: 20px; font-size: 18px; color: #444;">Historia de {{ categoria.name | capitalize }}</h3>
+                  <h3 style="margin-top: 20px; font-size: 18px; color: #444;">{{ categoria.name | capitalize }}</h3>
                   <ul class="posts-list">
                       {% for post in categoria.items %}
                       <li class="post-item">
