@@ -540,6 +540,10 @@ pre[class*="language-"] {
   --primary-color: #1a8754; /* Verde */
 }
 
+.microsite-libros {
+  --primary-color: #f39c12; /* Naranja */
+}
+
 /* Global NavBar Links with Accent Inheritance */
 .microsite-header a {
   text-decoration: none;

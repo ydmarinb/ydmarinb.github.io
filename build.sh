@@ -109,6 +109,8 @@ for category in os.listdir(NOTEBOOKS_DIR):
     
     for root, _, files in os.walk(category_path):
         for file in files:
+            if file.lower() == "description.md":
+                continue
             if file.endswith('.ipynb'):
                 nb_path = os.path.join(root, file)
                 
@@ -171,6 +173,7 @@ html_content = '''<!DOCTYPE html>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="index_blog.html">Blog</a></li>
+                    <li><a href="libros.html">Biblioteca</a></li>
                 </ul>
             </nav>
         </div>
@@ -189,7 +192,7 @@ html_content = '''<!DOCTYPE html>
 '''
 
 # Add categories and posts
-category_order = ['ingenieria-datos', 'estadistica', 'historia-colombia']
+category_order = ['ingenieria-datos', 'estadistica', 'historia-colombia', 'libros', 'historia']
 for cat in category_order:
     if cat in posts_by_category and posts_by_category[cat]:
         cat_display = cat.replace('-', ' ').title()

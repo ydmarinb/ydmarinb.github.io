@@ -36,9 +36,12 @@ jobs:
       - name: Install Python dependencies
         run: pip install jupyter nbconvert
 
+      - name: Extract descriptions
+        run: python scripts/extract_descriptions.py
+
       - name: Convert ipynb to Markdown and Add Frontmatter
         run: |
-          mkdir -p _datos _statistics _historia
+          mkdir -p _datos _statistics _historia _libros
           
           # Convert notebooks to Markdown recursively
           shopt -s globstar nullglob
@@ -53,12 +56,18 @@ jobs:
           for md in notebooks/**/*.md; do
             if [ -f "$md" ]; then
               filename=$(basename "$md")
+              if [ "${filename,,}" == "description.md" ]; then
+                continue
+              fi
               dirname=$(dirname "$md")
               
               # Assign layout and target folder prioritizing parent directory
               if [[ "$dirname" == *"historia"* ]]; then
                 target="_historia/$filename"
                 layout="historia"
+              elif [[ "$dirname" == *"libros"* ]] || [[ "$dirname" == *"biblio"* ]]; then
+                target="_libros/$filename"
+                layout="libros"
               elif [[ "$dirname" == *"ingenieria"* ]] || [[ "$dirname" == *"data"* ]]; then
                 target="_datos/$filename"
                 layout="data"
@@ -113,7 +122,7 @@ jobs:
               cp -r "$true_folder" assets/img/
               
               # Update image references in target markdown files
-              for mdfile in _statistics/*.md _datos/*.md _historia/*.md _historia/**/*.md; do
+              for mdfile in _statistics/*.md _datos/*.md _historia/*.md _historia/**/*.md _libros/*.md _libros/**/*.md; do
                 if [ -f "$mdfile" ]; then
                   sed -i "s|$(basename "$true_folder")/|/assets/img/$(basename "$true_folder")/|g" "$mdfile"
                 fi

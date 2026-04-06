@@ -9,6 +9,9 @@ collections:
   historia:
     output: true
     permalink: /historia/:path/
+  libros:
+    output: true
+    permalink: /libros/:path/
   statistics:
     output: true
     permalink: /statistics/:path/
@@ -36,6 +39,12 @@ defaults:
     values:
       layout: data
       lang: "en"
+  - scope:
+      path: ""
+      type: libros
+    values:
+      layout: libros
+      lang: "es"
 
 # Active Plugins
 plugins:

@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<head>
+  <!-- MathJax for Formulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- PrismJS for Code -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+</head>
+<div class="layout-libros" style="font-family: 'Merriweather', 'Georgia', serif; font-size: 18px; line-height: 1.8; color: #333; max-width: 750px; margin: 0 auto; padding: 40px 20px;">
+  <article>
+    <header style="margin-bottom: 40px; border-bottom: 2px solid #f39c12; padding-bottom: 20px; text-align: center;">
+      <h1 style="color: #f39c12; font-size: 2.5rem; margin-bottom: 10px;">{{ page.title }}</h1>
+      <p style="color: #666; font-style: italic;">
+        Por Yubar Daniel Marin Benjumea<br>
+        {% if page.date %}
+          {% assign m_index = page.date | date: "%-m" | minus: 1 %}
+          {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
+          <span style="font-size: 0.9em; opacity: 0.8;">Publicado el {{ page.date | date: "%d" }} de {{ meses[m_index] }}, {{ page.date | date: "%Y" }}</span>
+        {% endif %}
+      </p>
+    </header>
+    <div class="content">
+      {{ content }}
+    </div>
+  </article>
+</div>
