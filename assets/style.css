@@ -343,6 +343,13 @@ footer p {
   color: var(--primary-color);
 }
 
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   h1 {
@@ -357,9 +364,17 @@ footer p {
     font-size: 20px;
   }
 
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
   nav ul {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 0;
   }
 
   .interests {
@@ -379,6 +394,37 @@ footer p {
   .post-date {
     margin-left: 0;
     margin-top: 8px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button-group .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    margin: 0;
+  }
+
+  .formal-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .formal-date {
+    min-width: auto;
   }
 }
 
