@@ -220,6 +220,42 @@ main {
   margin-left: 20px;
 }
 
+/* Microsite Index Lists */
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.index-item {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.index-item:hover {
+  background-color: var(--secondary-color);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.index-link {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.index-date {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
 /* Code */
 pre, code {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
@@ -399,6 +435,16 @@ footer p {
   .post-date {
     margin-left: 0;
     margin-top: 8px;
+  }
+
+  .index-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .index-date {
+    margin-left: 0;
+    margin-top: 5px;
   }
 
   .button-group {
