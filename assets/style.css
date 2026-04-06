@@ -32,6 +32,8 @@ body {
   background-color: #ffffff;
   line-height: var(--line-height);
   font-size: 16px;
+  overflow-wrap: break-word; /* Previene que textos largos (URLs) rompan el ancho de la pantalla móvil */
+  word-wrap: break-word;
 }
 
 /* Layout */
@@ -257,6 +259,9 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  display: block; /* Makes wide pandas dataframes scrollable horizontally instead of breaking mobile view */
+  overflow-x: auto;
+  white-space: nowrap; /* Evita que las columnas colapsen horriblemente en móviles */
 }
 
 thead {
