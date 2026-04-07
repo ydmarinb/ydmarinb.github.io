@@ -16,12 +16,7 @@ layout: default
     <header style="margin-bottom: 40px; border-bottom: 2px solid #c0392b; padding-bottom: 20px; text-align: center;">
       <h1 style="color: #c0392b; font-size: 2.5rem; margin-bottom: 10px;">{{ page.title }}</h1>
       <p style="color: #666; font-style: italic;">
-        Por Yubar Daniel Marin Benjumea<br>
-        {% if page.date %}
-          {% assign m_index = page.date | date: "%-m" | minus: 1 %}
-          {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
-          <span style="font-size: 0.9em; opacity: 0.8;">Publicado el {{ page.date | date: "%d" }} de {{ meses[m_index] }}, {{ page.date | date: "%Y" }}</span>
-        {% endif %}
+        Por Yubar Daniel Marin Benjumea
       </p>
     </header>
     <div class="content">

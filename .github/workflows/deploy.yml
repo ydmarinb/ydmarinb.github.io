@@ -110,7 +110,6 @@ jobs:
                 echo "title: \"$title\"" >> "$target"
               fi
               
-              echo "date: $DATE_TODAY" >> "$target"
               echo "subtopic: \"$subtopic\"" >> "$target"
               echo "---" >> "$target"
               echo "" >> "$target"

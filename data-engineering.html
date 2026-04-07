@@ -46,7 +46,6 @@ lang: en
                         {% for post in sorted_posts %}
                             <li class="index-item">
                                 <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
-                                <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -69,7 +68,6 @@ lang: en
                         {% for post in sorted_posts %}
                             <li class="index-item">
                                 <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
-                                <span class="index-date">{{ post.date | date: "%B %d, %Y" }}</span>
                             </li>
                         {% endfor %}
                     </ul>

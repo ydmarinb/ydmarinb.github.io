@@ -38,19 +38,14 @@ lang: es
             {% endif %}
             
             {% assign grouped_posts = site.historia | group_by: 'subtopic' %}
-            {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
             
             {% for group in grouped_posts %}
                 {% if group.name == 'General' or group.name == '' or group.name == nil %}
                     <ul class="index-list">
                         {% assign sorted_posts = group.items | sort: 'date' | reverse %}
                         {% for post in sorted_posts %}
-                            {% assign m_index = post.date | date: "%-m" | minus: 1 %}
                             <li class="index-item">
                                 <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
-                                <span class="index-date">
-                                    {{ post.date | date: "%d" }} de {{ meses[m_index] }} de {{ post.date | date: "%Y" }}
-                                </span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -71,12 +66,8 @@ lang: es
                     <ul class="index-list">
                         {% assign sorted_posts = group.items | sort: 'date' | reverse %}
                         {% for post in sorted_posts %}
-                            {% assign m_index = post.date | date: "%-m" | minus: 1 %}
                             <li class="index-item">
                                 <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
-                                <span class="index-date">
-                                    {{ post.date | date: "%d" }} de {{ meses[m_index] }} de {{ post.date | date: "%Y" }}
-                                </span>
                             </li>
                         {% endfor %}
                     </ul>
