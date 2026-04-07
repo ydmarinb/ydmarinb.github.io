@@ -89,11 +89,27 @@ jobs:
               # Generate current date for Jekyll Sort compatibility
               DATE_TODAY=$(date "+%Y-%m-%d")
               
+              # Try to extract book_title and author from notebook metadata (for libros)
+              nb_file="${md%.md}.ipynb"
+              book_title=""
+              book_author=""
+              if [ -f "$nb_file" ] && [[ "$layout" == "libros" ]]; then
+                book_title=$(python3 scripts/extract_book_metadata.py "$nb_file" book_title 2>/dev/null || echo "")
+                book_author=$(python3 scripts/extract_book_metadata.py "$nb_file" author 2>/dev/null || echo "")
+              fi
+              
               # Inject frontmatter dynamically into the target file
               echo "---" > "$target"
               echo "layout: $layout" >> "$target"
-              title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
-              echo "title: \"$title\"" >> "$target"
+              
+              if [ -n "$book_title" ] && [ -n "$book_author" ]; then
+                echo "title: \"$book_title\"" >> "$target"
+                echo "book_author: \"$book_author\"" >> "$target"
+              else
+                title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
+                echo "title: \"$title\"" >> "$target"
+              fi
+              
               echo "date: $DATE_TODAY" >> "$target"
               echo "subtopic: \"$subtopic\"" >> "$target"
               echo "---" >> "$target"

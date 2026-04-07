@@ -47,7 +47,9 @@ lang: es
                         {% for post in sorted_posts %}
                             {% assign m_index = post.date | date: "%-m" | minus: 1 %}
                             <li class="index-item">
-                                <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                                <a href="{{ post.url }}" class="index-link">
+                                    {{ post.title }}{% if post.book_author %} — <em>{{ post.book_author }}</em>{% endif %}
+                                </a>
                                 <span class="index-date">
                                     {{ post.date | date: "%d" }} de {{ meses[m_index] }} de {{ post.date | date: "%Y" }}
                                 </span>
@@ -73,7 +75,9 @@ lang: es
                         {% for post in sorted_posts %}
                             {% assign m_index = post.date | date: "%-m" | minus: 1 %}
                             <li class="index-item">
-                                <a href="{{ post.url }}" class="index-link">{{ post.title }}</a>
+                                <a href="{{ post.url }}" class="index-link">
+                                    {{ post.title }}{% if post.book_author %} — <em>{{ post.book_author }}</em>{% endif %}
+                                </a>
                                 <span class="index-date">
                                     {{ post.date | date: "%d" }} de {{ meses[m_index] }} de {{ post.date | date: "%Y" }}
                                 </span>

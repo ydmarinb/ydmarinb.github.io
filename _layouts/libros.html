@@ -15,8 +15,13 @@ layout: default
   <article>
     <header style="margin-bottom: 40px; border-bottom: 2px solid #f39c12; padding-bottom: 20px; text-align: center;">
       <h1 style="color: #f39c12; font-size: 2.5rem; margin-bottom: 10px;">{{ page.title }}</h1>
+      {% if page.book_author %}
+      <p style="color: #666; font-size: 1.2rem; font-style: italic; margin-bottom: 10px;">
+        por {{ page.book_author }}
+      </p>
+      {% endif %}
       <p style="color: #666; font-style: italic;">
-        Por Yubar Daniel Marin Benjumea<br>
+        Notas de Yubar Daniel Marin Benjumea<br>
         {% if page.date %}
           {% assign m_index = page.date | date: "%-m" | minus: 1 %}
           {% assign meses = "Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre" | split: "," %}
