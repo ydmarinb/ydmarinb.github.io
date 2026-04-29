@@ -51,17 +51,71 @@ def get_file_date(filepath):
     timestamp = os.path.getmtime(filepath)
     return datetime.fromtimestamp(timestamp)
 
+def capitalize_first_letter(text):
+    """Capitalize only the first letter of the string."""
+    if not text:
+        return text
+    return text[0].upper() + text[1:]
+
 def get_notebook_title(notebook_path):
-    """Extract title from notebook or use filename."""
+    """Extract title from notebook or use filename.
+    
+    Supports filename syntax:
+    - <name>.ipynb = adds exclamation marks: ¡name!
+    - [name].ipynb = adds question marks: ¿name?
+    
+    Also supports metadata keys:
+    - 'title': The notebook title
+    - 'exclamation': Set to True to add ¡ !
+    - 'question': Set to True to add ¿ ?
+    """
+    title = ""
+    use_exclamation = False
+    use_question = False
+    
+    # Check filename for special syntax
+    filename = Path(notebook_path).stem  # Get filename without extension
+    
+    # Check for exclamation syntax: <name>.ipynb
+    if filename.startswith('<') and filename.endswith('>'):
+        title = filename[1:-1]
+        use_exclamation = True
+    # Check for question syntax: [name].ipynb
+    elif filename.startswith('[') and filename.endswith(']'):
+        title = filename[1:-1]
+        use_question = True
+    
     try:
         with open(notebook_path, 'r') as f:
             nb = json.load(f)
-            if 'metadata' in nb and 'title' in nb['metadata']:
-                return nb['metadata']['title']
+            if 'metadata' in nb:
+                # Metadata title overrides filename
+                if 'title' in nb['metadata']:
+                    title = nb['metadata']['title']
+                # Metadata marks override detection
+                if 'exclamation' in nb['metadata']:
+                    use_exclamation = nb['metadata']['exclamation']
+                    use_question = False
+                if 'question' in nb['metadata']:
+                    use_question = nb['metadata']['question']
+                    use_exclamation = False
     except:
         pass
-    # Fallback to filename without extension
-    return Path(notebook_path).stem.replace('-', ' ').replace('_', ' ').title()
+    
+    # Fallback to filename without extension and special chars
+    if not title:
+        title = filename.replace('-', ' ').replace('_', ' ')
+    
+    # Capitalize only the first letter
+    title = capitalize_first_letter(title)
+    
+    # Add marks if requested
+    if use_exclamation:
+        title = f"¡{title}!"
+    elif use_question:
+        title = f"¿{title}?"
+    
+    return title
 
 def convert_notebook_to_markdown(nb_path, md_path):
     """Convert Jupyter notebook to Markdown using nbconvert."""
@@ -195,7 +249,7 @@ html_content = '''<!DOCTYPE html>
 category_order = ['ingenieria-datos', 'historia-colombia', 'libros', 'historia']
 for cat in category_order:
     if cat in posts_by_category and posts_by_category[cat]:
-        cat_display = cat.replace('-', ' ').title()
+        cat_display = capitalize_first_letter(cat.replace('-', ' ').replace('_', ' '))
         html_content += f'''
             <div class="category">
                 <h2 class="category-title">{cat_display}</h2>

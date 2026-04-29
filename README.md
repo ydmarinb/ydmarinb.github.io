@@ -66,6 +66,42 @@ git push origin main
 
 **That's it.** The GitHub Action will immediately boot up, convert the `.ipynb` file to Markdown, inject the current system date via shell commands into the frontmatter, dispatch the markdown file to the hidden Jekyll collection folders (`_historia`, `_statistics`, `_datos`), extract image assets, compile the Jekyll site natively, and deploy the new index layouts automatically.
 
+### 4. Optional: Add Exclamation or Question Marks to Titles
+You can add opening and closing signs to your notebook titles by using special symbols in the filename:
+
+**For Exclamation Marks** use angle brackets:
+- `<` = **opening bracket** (generates `¡`)
+- `>` = **closing bracket** (generates `!`)
+
+```bash
+<spark-query-plan>.ipynb
+# Result in blog: ¡Spark query-plan!
+```
+
+**For Question Marks** use square brackets:
+- `[` = **opening bracket** (generates `¿`)
+- `]` = **closing bracket** (generates `?`)
+
+```bash
+[understanding-distributions].ipynb
+# Result in blog: ¿Understanding distributions?
+```
+
+**Visual guide:**
+```
+< spark-query-plan >     →  ¡Spark query-plan!
+[ understanding-data ]   →  ¿Understanding data?
+```
+
+**Examples:**
+| Filename | Blog Display |
+|----------|--------------|
+| `<introduction>.ipynb` | ¡Introduction! |
+| `[what-is-spark].ipynb` | ¿What is spark? |
+| `<data-transformation>.ipynb` | ¡Data transformation! |
+| `[how-to-optimize].ipynb` | ¿How to optimize? |
+| `spark-query-plan.ipynb` | Spark query-plan |
+
 ## 🎨 Theme & Technical Stack
 
 - **Code Engine**: Customized `PrismJS` loaded globally with a dark-node contrast theme for readability against white backgrounds.
