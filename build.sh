@@ -69,44 +69,13 @@ def get_notebook_title(notebook_path):
     - 'exclamation': Set to True to add ¡ !
     - 'question': Set to True to add ¿ ?
     """
-    title = ""
-    use_exclamation = False
-    use_question = False
-    use_both = False
-    
     # Check filename for special syntax
     filename = Path(notebook_path).stem  # Get filename without extension
-    
-    # Check for both syntax: <name] or [name>
-    if (filename.startswith('<') and filename.endswith(']')) or (filename.startswith('[') and filename.endswith('>')):
-        title = filename[1:-1]
-        use_both = True
-    # Check for exclamation syntax: <name>.ipynb
-    elif filename.startswith('<') and filename.endswith('>'):
-        title = filename[1:-1]
-        use_exclamation = True
-    # Check for question syntax: [name].ipynb
-    elif filename.startswith('[') and filename.endswith(']'):
-        title = filename[1:-1]
-        use_question = True
     
     try:
         with open(notebook_path, 'r') as f:
             nb = json.load(f)
             if 'metadata' in nb:
-                # Metadata marks override detection
-                if 'both' in nb['metadata']:
-                    use_both = nb['metadata']['both']
-                    use_exclamation = False
-                    use_question = False
-                elif 'exclamation' in nb['metadata']:
-                    use_exclamation = nb['metadata']['exclamation']
-                    use_question = False
-                    use_both = False
-                elif 'question' in nb['metadata']:
-                    use_question = nb['metadata']['question']
-                    use_exclamation = False
-                    use_both = False
                 # Metadata title overrides filename
                 if 'title' in nb['metadata']:
                     title = nb['metadata']['title']
@@ -116,21 +85,38 @@ def get_notebook_title(notebook_path):
     # Fallback to filename without extension and special chars
     if not title:
         title = filename.replace('-', ' ').replace('_', ' ')
+        
+        # We need to extract the actual text, removing [, ], <, > for capitalization
+        # Then we add the corresponding Spanish punctuation
+        has_open_q = '[' in title
+        has_close_q = ']' in title
+        has_open_e = '<' in title
+        has_close_e = '>' in title
+        
+        # Clean the title of these characters
+        clean_title = title.replace('[', '').replace(']', '').replace('<', '').replace('>', '').strip()
+        
+        # Capitalize only the first letter, rest lowercase
+        if clean_title:
+            clean_title = clean_title[0].upper() + clean_title[1:].lower()
+            
+        # Re-apply punctuation
+        prefix = ""
+        suffix = ""
+        if has_open_e: prefix += "¡"
+        if has_open_q: prefix += "¿"
+        if has_close_q: suffix += "?"
+        if has_close_e: suffix += "!"
+        
+        title = prefix + clean_title + suffix
     else:
+        # If title came from metadata, we assume it's already perfectly formatted, 
+        # or we can just apply the dash replacement and capitalization
         title = title.replace('-', ' ').replace('_', ' ')
+        if title:
+            # Check for punctuation marks manually included or we just leave it as is
+            title = title[0].upper() + title[1:].lower()
 
-    
-    # Capitalize only the first letter
-    title = capitalize_first_letter(title)
-    
-    # Add marks if requested
-    if use_both:
-        title = f"¡¿{title}?!"
-    elif use_exclamation:
-        title = f"¡{title}!"
-    elif use_question:
-        title = f"¿{title}?"
-    
     return title
 
 def convert_notebook_to_markdown(nb_path, md_path):

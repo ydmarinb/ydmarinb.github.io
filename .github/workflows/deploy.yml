@@ -109,7 +109,10 @@ jobs:
                 echo "title: \"$book_title\"" >> "$target"
                 echo "book_author: \"$book_author\"" >> "$target"
               else
-                title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
+                title=$(python3 scripts/get_title.py "$nb_file" 2>/dev/null || echo "")
+                if [ -z "$title" ]; then
+                  title=$(echo "${filename%.md}" | tr '-' ' ' | tr '_' ' ')
+                fi
                 echo "title: \"$title\"" >> "$target"
               fi
               
