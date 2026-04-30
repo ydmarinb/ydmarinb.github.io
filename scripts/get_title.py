@@ -24,7 +24,7 @@ def get_title(notebook_path):
         clean_title = title.replace('[', '').replace(']', '').replace('<', '').replace('>', '').strip()
         
         if clean_title:
-            clean_title = clean_title[0].upper() + clean_title[1:].lower()
+            clean_title = clean_title[0].upper() + clean_title[1:]
             
         prefix = ""
         suffix = ""
@@ -37,7 +37,7 @@ def get_title(notebook_path):
     else:
         title = title.replace('-', ' ').replace('_', ' ')
         if title:
-            title = title[0].upper() + title[1:].lower()
+            title = title[0].upper() + title[1:]
             
     return title
 

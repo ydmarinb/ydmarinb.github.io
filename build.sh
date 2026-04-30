@@ -97,9 +97,9 @@ def get_notebook_title(notebook_path):
         # Clean the title of these characters
         clean_title = title.replace('[', '').replace(']', '').replace('<', '').replace('>', '').strip()
         
-        # Capitalize only the first letter, rest lowercase
+        # Capitalize only the first letter, leave the rest alone
         if clean_title:
-            clean_title = clean_title[0].upper() + clean_title[1:].lower()
+            clean_title = clean_title[0].upper() + clean_title[1:]
             
         # Re-apply punctuation
         prefix = ""
@@ -116,7 +116,7 @@ def get_notebook_title(notebook_path):
         title = title.replace('-', ' ').replace('_', ' ')
         if title:
             # Check for punctuation marks manually included or we just leave it as is
-            title = title[0].upper() + title[1:].lower()
+            title = title[0].upper() + title[1:]
 
     return title
 
