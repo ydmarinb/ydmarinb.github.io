@@ -64,8 +64,11 @@ def get_notebook_title(notebook_path):
     try:
         with open(notebook_path, 'r', encoding='utf-8') as f:
             nb = json.load(f)
-            if 'metadata' in nb and 'title' in nb['metadata']:
-                title = nb['metadata']['title']
+            if 'metadata' in nb:
+                if 'title' in nb['metadata']:
+                    title = nb['metadata']['title']
+                elif 'book_title' in nb['metadata'] and 'author' in nb['metadata']:
+                    title = f"{nb['metadata']['book_title']}  {nb['metadata']['author']}"
     except:
         pass
         
@@ -77,7 +80,8 @@ def get_notebook_title(notebook_path):
         has_close_e = '>' in title
         clean_title = title.replace('[', '').replace(']', '').replace('<', '').replace('>', '').strip()
         if clean_title:
-            clean_title = clean_title[0].upper() + clean_title[1:]
+            # For filename-based titles, lowercase everything except the first letter
+            clean_title = clean_title[0].upper() + clean_title[1:].lower()
         prefix = ""
         suffix = ""
         if has_open_e: prefix += "¡"
@@ -86,6 +90,7 @@ def get_notebook_title(notebook_path):
         if has_close_e: suffix += "!"
         title = prefix + clean_title + suffix
     else:
+        # For metadata-based titles, keep the casing as defined in metadata
         title = title.replace('-', ' ').replace('_', ' ')
         if title:
             title = title[0].upper() + title[1:]
