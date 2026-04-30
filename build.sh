@@ -69,6 +69,7 @@ def get_notebook_title(notebook_path):
     - 'exclamation': Set to True to add ¡ !
     - 'question': Set to True to add ¿ ?
     """
+    title = ""
     # Check filename for special syntax
     filename = Path(notebook_path).stem  # Get filename without extension
     
