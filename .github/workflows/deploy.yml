@@ -86,7 +86,7 @@ jobs:
               if [ -z "$subtopic_raw" ]; then
                 subtopic="General"
               else
-                subtopic=$(echo "$subtopic_raw" | tr '-' ' ' | tr '_' ' ' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+                subtopic=$(echo "$subtopic_raw" | tr '-' ' ' | tr '_' ' ' | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
               fi
               
               # Generate current date for Jekyll Sort compatibility

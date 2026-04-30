@@ -58,66 +58,37 @@ def capitalize_first_letter(text):
     return text[0].upper() + text[1:]
 
 def get_notebook_title(notebook_path):
-    """Extract title from notebook or use filename.
-    
-    Supports filename syntax:
-    - <name>.ipynb = adds exclamation marks: ¡name!
-    - [name].ipynb = adds question marks: ¿name?
-    
-    Also supports metadata keys:
-    - 'title': The notebook title
-    - 'exclamation': Set to True to add ¡ !
-    - 'question': Set to True to add ¿ ?
-    """
+    # This logic matches scripts/get_title.py
     title = ""
-    # Check filename for special syntax
-    filename = Path(notebook_path).stem  # Get filename without extension
-    
+    filename = Path(notebook_path).stem
     try:
-        with open(notebook_path, 'r') as f:
+        with open(notebook_path, 'r', encoding='utf-8') as f:
             nb = json.load(f)
-            if 'metadata' in nb:
-                # Metadata title overrides filename
-                if 'title' in nb['metadata']:
-                    title = nb['metadata']['title']
+            if 'metadata' in nb and 'title' in nb['metadata']:
+                title = nb['metadata']['title']
     except:
         pass
-    
-    # Fallback to filename without extension and special chars
+        
     if not title:
         title = filename.replace('-', ' ').replace('_', ' ')
-        
-        # We need to extract the actual text, removing [, ], <, > for capitalization
-        # Then we add the corresponding Spanish punctuation
         has_open_q = '[' in title
         has_close_q = ']' in title
         has_open_e = '<' in title
         has_close_e = '>' in title
-        
-        # Clean the title of these characters
         clean_title = title.replace('[', '').replace(']', '').replace('<', '').replace('>', '').strip()
-        
-        # Capitalize only the first letter, leave the rest alone
         if clean_title:
             clean_title = clean_title[0].upper() + clean_title[1:]
-            
-        # Re-apply punctuation
         prefix = ""
         suffix = ""
         if has_open_e: prefix += "¡"
         if has_open_q: prefix += "¿"
         if has_close_q: suffix += "?"
         if has_close_e: suffix += "!"
-        
         title = prefix + clean_title + suffix
     else:
-        # If title came from metadata, we assume it's already perfectly formatted, 
-        # or we can just apply the dash replacement and capitalization
         title = title.replace('-', ' ').replace('_', ' ')
         if title:
-            # Check for punctuation marks manually included or we just leave it as is
             title = title[0].upper() + title[1:]
-
     return title
 
 def convert_notebook_to_markdown(nb_path, md_path):
@@ -132,11 +103,8 @@ def convert_notebook_to_markdown(nb_path, md_path):
         ]
         subprocess.run(cmd, check=True, capture_output=True)
         return True
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         print(f"Warning: Could not convert {nb_path}: {e}")
-        return False
-    except FileNotFoundError:
-        print("Warning: python3 -m nbconvert not found. Make sure nbconvert is installed.")
         return False
 
 def extract_first_paragraph(md_path):
@@ -177,7 +145,7 @@ for category in os.listdir(NOTEBOOKS_DIR):
                     subtopic = "General"
                 else:
                     subtopic_raw = rel_path.split(os.sep)[0]
-                    subtopic = subtopic_raw.replace('-', ' ').replace('_', ' ').title()
+                    subtopic = capitalize_first_letter(subtopic_raw.replace('-', ' ').replace('_', ' '))
                 
                 md_filename = file.replace('.ipynb', '.md')
                 md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
