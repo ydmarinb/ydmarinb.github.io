@@ -39,6 +39,9 @@ jobs:
       - name: Extract descriptions
         run: python scripts/extract_descriptions.py
 
+      - name: Generate Blog Index
+        run: bash build.sh
+
       - name: Convert ipynb to Markdown and Add Frontmatter
         run: |
           mkdir -p _datos _historia _libros
