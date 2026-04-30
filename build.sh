@@ -72,12 +72,17 @@ def get_notebook_title(notebook_path):
     title = ""
     use_exclamation = False
     use_question = False
+    use_both = False
     
     # Check filename for special syntax
     filename = Path(notebook_path).stem  # Get filename without extension
     
+    # Check for both syntax: <name] or [name>
+    if (filename.startswith('<') and filename.endswith(']')) or (filename.startswith('[') and filename.endswith('>')):
+        title = filename[1:-1]
+        use_both = True
     # Check for exclamation syntax: <name>.ipynb
-    if filename.startswith('<') and filename.endswith('>'):
+    elif filename.startswith('<') and filename.endswith('>'):
         title = filename[1:-1]
         use_exclamation = True
     # Check for question syntax: [name].ipynb
@@ -89,28 +94,39 @@ def get_notebook_title(notebook_path):
         with open(notebook_path, 'r') as f:
             nb = json.load(f)
             if 'metadata' in nb:
+                # Metadata marks override detection
+                if 'both' in nb['metadata']:
+                    use_both = nb['metadata']['both']
+                    use_exclamation = False
+                    use_question = False
+                elif 'exclamation' in nb['metadata']:
+                    use_exclamation = nb['metadata']['exclamation']
+                    use_question = False
+                    use_both = False
+                elif 'question' in nb['metadata']:
+                    use_question = nb['metadata']['question']
+                    use_exclamation = False
+                    use_both = False
                 # Metadata title overrides filename
                 if 'title' in nb['metadata']:
                     title = nb['metadata']['title']
-                # Metadata marks override detection
-                if 'exclamation' in nb['metadata']:
-                    use_exclamation = nb['metadata']['exclamation']
-                    use_question = False
-                if 'question' in nb['metadata']:
-                    use_question = nb['metadata']['question']
-                    use_exclamation = False
     except:
         pass
     
     # Fallback to filename without extension and special chars
     if not title:
         title = filename.replace('-', ' ').replace('_', ' ')
+    else:
+        title = title.replace('-', ' ').replace('_', ' ')
+
     
     # Capitalize only the first letter
     title = capitalize_first_letter(title)
     
     # Add marks if requested
-    if use_exclamation:
+    if use_both:
+        title = f"¡¿{title}?!"
+    elif use_exclamation:
         title = f"¡{title}!"
     elif use_question:
         title = f"¿{title}?"

@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +22,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="index_blog.html">Blog</a></li>
+                    <li><a href="libros.html">Biblioteca</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,40 +33,111 @@
             <section style="margin-bottom: 60px;">
                 <h1>Blog</h1>
                 <p style="font-size: 18px; color: #555; margin-bottom: 30px;">
-                    Exploring data engineering and Colombian history through analysis and visualization.
+                    Exploring data engineering, statistics, and Colombian history through analysis and visualization.
                 </p>
             </section>
 
             <section class="posts-section">
 
             <div class="category">
-                <h2 class="category-title">Data Architecture</h2>
+                <h2 class="category-title">Ingenieria datos</h2>
                 <ul class="posts-list">
-                    {% for post in site.datos %}
+
                     <li class="post-item">
                         <div>
-                            <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+                            <a href="posts/ingenieria-datos_<Is-your-spark-cluster-underperforming].md" class="post-title">¡¿Is your spark cluster underperforming?!</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">YouYou've designed a robust architecture, deployed a cluster with hundreds of cores, and configured executors with ample memory. However, when monitor...</p>
                         </div>
+                        <span class="post-date">April 29, 2026</span>
                     </li>
-                    {% endfor %}
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_spark-query-plan.md" class="post-title">Spark query plan</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before moving a single byte, Spark transforms your code through a logical and physical assembly line. This process ensures your code executes as effic...</p>
+                        </div>
+                        <span class="post-date">April 28, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas copy 2.md" class="post-title">Introduccion distribuciones estadisticas copy 2</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas copy.md" class="post-title">Introduccion distribuciones estadisticas copy</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas.md" class="post-title">Introduccion distribuciones estadisticas</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
                 </ul>
             </div>
-            
+
             <div class="category">
-                <h2 class="category-title">El Algoritmo del Pasado</h2>
-                {% assign categorias = site.historia | group_by: "subcategoria" %}
-                {% for categoria in categorias %}
-                  <h3 style="margin-top: 20px; font-size: 18px; color: #444;">{{ categoria.name | capitalize }}</h3>
-                  <ul class="posts-list">
-                      {% for post in categoria.items %}
-                      <li class="post-item">
-                          <div>
-                              <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
-                          </div>
-                      </li>
-                      {% endfor %}
-                  </ul>
-                {% endfor %}
+                <h2 class="category-title">Historia colombia</h2>
+                <ul class="posts-list">
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/historia-colombia_otro.md" class="post-title">Otro</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas copy 2.md" class="post-title">Introduccion distribuciones estadisticas copy 2</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas copy.md" class="post-title">Introduccion distribuciones estadisticas copy</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas.md" class="post-title">Introduccion distribuciones estadisticas</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">April 04, 2026</span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="category-title">Libros</h2>
+                <ul class="posts-list">
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/libros_La-mente-de-los-justos--Jonathan-Haidt.md" class="post-title">La mente de los justos  Jonathan Haidt</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este espacio recopilo las ideas principales de La mente de los justos, un libro fundamental para entender por qué las personas buenas se dividen po...</p>
+                        </div>
+                        <span class="post-date">April 07, 2026</span>
+                    </li>
+
+                </ul>
             </div>
 
             </section>
