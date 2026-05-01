@@ -30,6 +30,11 @@ def get_title(notebook_path):
             # For filename-based titles, lowercase everything except the first letter
             clean_title = clean_title[0].upper() + clean_title[1:].lower()
             
+            # Capitalize after colon
+            if ':' in clean_title:
+                import re
+                clean_title = re.sub(r':\s*([a-z])', lambda m: ': ' + m.group(1).upper(), clean_title)
+            
         prefix = ""
         suffix = ""
         if has_open_e: prefix += "¡"

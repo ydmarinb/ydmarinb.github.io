@@ -82,6 +82,10 @@ def get_notebook_title(notebook_path):
         if clean_title:
             # For filename-based titles, lowercase everything except the first letter
             clean_title = clean_title[0].upper() + clean_title[1:].lower()
+            
+            # Capitalize after colon
+            if ':' in clean_title:
+                clean_title = re.sub(r':\s*([a-z])', lambda m: ': ' + m.group(1).upper(), clean_title)
         prefix = ""
         suffix = ""
         if has_open_e: prefix += "¡"
@@ -152,12 +156,12 @@ for category in os.listdir(NOTEBOOKS_DIR):
                     subtopic_raw = rel_path.split(os.sep)[0]
                     subtopic = capitalize_first_letter(subtopic_raw.replace('-', ' ').replace('_', ' '))
                 
-                md_filename = file.replace('.ipynb', '.md')
+                md_filename = file.replace('.ipynb', '.md').replace(':', '-')
                 if rel_path == '.' or not rel_path:
                     md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
                 else:
-                    # Include sub-path in filename to avoid collisions
-                    sub_path_slug = rel_path.replace(os.sep, '_').replace(' ', '_')
+                    # Include sub-path in filename to avoid collisions and sanitize
+                    sub_path_slug = rel_path.replace(os.sep, '_').replace(' ', '_').replace(':', '-')
                     md_path = os.path.join(POSTS_DIR, f"{category}_{sub_path_slug}_{md_filename}")
                 
                 # Convert notebook to markdown

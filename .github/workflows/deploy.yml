@@ -58,7 +58,7 @@ jobs:
           # Move markdown files and inject frontmatter
           for md in notebooks/**/*.md; do
             if [ -f "$md" ]; then
-              filename=$(basename "$md")
+              filename=$(basename "$md" | tr ':' '-')
               if [ "${filename,,}" == "description.md" ]; then
                 continue
               fi
@@ -80,8 +80,8 @@ jobs:
               fi
               
               rel_dir="${dirname#notebooks/}"
-              # Extract the sub-path by removing the top-level category
-              sub_path="${rel_dir#*/}"
+              # Extract the sub-path by removing the top-level category and sanitize
+              sub_path=$(echo "${rel_dir#*/}" | tr ':' '-')
               
               if [ "$sub_path" == "$rel_dir" ]; then
                 # File is in the root of the category
