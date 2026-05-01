@@ -153,7 +153,12 @@ for category in os.listdir(NOTEBOOKS_DIR):
                     subtopic = capitalize_first_letter(subtopic_raw.replace('-', ' ').replace('_', ' '))
                 
                 md_filename = file.replace('.ipynb', '.md')
-                md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
+                if rel_path == '.' or not rel_path:
+                    md_path = os.path.join(POSTS_DIR, f"{category}_{md_filename}")
+                else:
+                    # Include sub-path in filename to avoid collisions
+                    sub_path_slug = rel_path.replace(os.sep, '_').replace(' ', '_')
+                    md_path = os.path.join(POSTS_DIR, f"{category}_{sub_path_slug}_{md_filename}")
                 
                 # Convert notebook to markdown
                 print(f"Converting {file} from {root}...")

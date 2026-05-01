@@ -66,17 +66,30 @@ jobs:
               
               # Assign layout and target folder prioritizing parent directory
               if [[ "$dirname" == *"historia"* ]]; then
-                target="_historia/$filename"
+                coll_dir="_historia"
                 layout="historia"
               elif [[ "$dirname" == *"libros"* ]] || [[ "$dirname" == *"biblio"* ]]; then
-                target="_libros/$filename"
+                coll_dir="_libros"
                 layout="libros"
               elif [[ "$dirname" == *"ingenieria"* ]] || [[ "$dirname" == *"data"* ]]; then
-                target="_datos/$filename"
+                coll_dir="_datos"
                 layout="data"
               else
-                target="_datos/$filename"
+                coll_dir="_datos"
                 layout="data"
+              fi
+              
+              rel_dir="${dirname#notebooks/}"
+              # Extract the sub-path by removing the top-level category
+              sub_path="${rel_dir#*/}"
+              
+              if [ "$sub_path" == "$rel_dir" ]; then
+                # File is in the root of the category
+                target="$coll_dir/$filename"
+              else
+                # Preserve subdirectory structure
+                mkdir -p "$coll_dir/$sub_path"
+                target="$coll_dir/$sub_path/$filename"
               fi
               
               rel_dir="${dirname#notebooks/}"
