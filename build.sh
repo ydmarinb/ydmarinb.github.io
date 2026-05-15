@@ -220,7 +220,7 @@ html_content = '''<!DOCTYPE html>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="index_blog.html">Blog</a></li>
-                    <li><a href="libros.html">Biblioteca</a></li>
+                    <!-- <li><a href="libros.html">Biblioteca</a></li> -->
                 </ul>
             </nav>
         </div>
