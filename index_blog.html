@@ -7,6 +7,14 @@
     <title>Blog - ydmarinb</title>
     <link rel="stylesheet" href="/assets/style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
@@ -45,82 +53,170 @@
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas copye.md" class="post-title">Introduccion distribuciones estadisticas copye</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                            <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Partitioning.md" class="post-title">Optimization in apache spark: Partitioning</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Imagine a massive bookshelf with thousands of books in no particular order. Finding a specific title requires a "Full Scan"—checking every spine one b...</p>
                         </div>
-                        <span class="post-date">May 01, 2026</span>
-                    </li>
-
-                    <li class="post-item">
-                        <div>
-                            <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Bucketing.md" class="post-title">Optimization in apache spark: Bucketing</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">The "Shuffle" is the silent culprit that makes your processes take hours instead of minutes. To combat it, there's a strategic optimization technique ...</p>
-                        </div>
-                        <span class="post-date">May 01, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
                             <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Caching-and-Persist.md" class="post-title">Optimization in apache spark: Caching and persist</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Spark doesn't execute transformations the moment you program them; it waits until the very last second, when an action (like a .show() or .write()) is...</p>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Spark does not execute transformations the moment they are programmed; instead, it waits until the very last second to compute the entire graph of ope...</p>
                         </div>
-                        <span class="post-date">May 01, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Bucketing.md" class="post-title">Optimization in apache spark: Bucketing</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">The "Shuffle" remains the silent culprit behind processes that take hours instead of minutes, but Bucketing offers a strategic optimization to transfo...</p>
+                        </div>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
                             <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Broadcast-Joins-and-AQE.md" class="post-title">Optimization in apache spark: Broadcast joins and aqe</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before version 3.0, Spark operated with static execution plans. Once the optimizer defined how data would be processed, the plan was unchangeable, reg...</p>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before version 3.0, Spark operated with static execution plans: once the optimizer defined the processing path, the plan was immutable regardless of t...</p>
                         </div>
-                        <span class="post-date">May 01, 2026</span>
-                    </li>
-
-                    <li class="post-item">
-                        <div>
-                            <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Partitioning.md" class="post-title">Optimization in apache spark: Partitioning</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Imagine you have a massive bookshelf with thousands of books, but they are in no particular order. If you're looking for a specific title, your only o...</p>
-                        </div>
-                        <span class="post-date">May 01, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
                             <a href="posts/ingenieria-datos_Bottleneck-in-Apache-Spark--Data-skew.md" class="post-title">Bottleneck in apache spark: Data skew</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Data skew is a major cause of SLA breaches in production environments. It happens when data is unevenly distributed across partitions. Most partitions...</p>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before version 3.0, Spark operated with static execution plans: once the optimizer defined the processing path, the plan was immutable regardless of t...</p>
                         </div>
-                        <span class="post-date">May 01, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/ingenieria-datos_spark-query-plan.md" class="post-title">Spark query plan</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before moving a single byte, Spark transforms your code through a logical and physical assembly line. This process ensures your code executes as effic...</p>
+                            <a href="posts/ingenieria-datos_Redshift.md" class="post-title">Redshift</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">In 2010, Amazon Web Services (AWS) stood at a crossroads that would define the future of cloud analytics. The company desperately needed a Data Wareho...</p>
                         </div>
-                        <span class="post-date">April 29, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Data-bricks.md" class="post-title">Data bricks</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">In the grand narrative of distributed systems, there is an irony every senior architect appreciates: Apache Spark was born as the high-performance suc...</p>
+                        </div>
+                        <span class="post-date">May 14, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_One-big-table.md" class="post-title">One big table</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">For any data analyst, "JOIN hell" is familiar territory: navigating Byzantine star schemas, tracing foreign keys through fragmented dimensions, and wr...</p>
+                        </div>
+                        <span class="post-date">May 13, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Kimball.md" class="post-title">Kimball</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">In today's enterprise ecosystem, organizations possess "mountains of data" but often face a strategic disconnect between information capture and timel...</p>
+                        </div>
+                        <span class="post-date">May 13, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Data-vault.md" class="post-title">Data vault</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">For the modern data engineer, business evolution is often synonymous with a technical nightmare. Traditional architectures, while robust in their time...</p>
+                        </div>
+                        <span class="post-date">May 13, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Inmon.md" class="post-title">Inmon</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">In the 1960s and 70s, the corporate world rushed into a digital frontier without a compass, leading to applications growing like "weeds in spring." Th...</p>
+                        </div>
+                        <span class="post-date">May 13, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Yellowbrick.md" class="post-title">Yellowbrick</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Despite massive CPUs and ultra-fast NVMe(https://es.wikipedia.org/wiki/NVMExpress) drives, most databases eventually hit an "invisible wall" of perfor...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Snowflake.md" class="post-title">Snowflake</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">In the early 2000s, the data industry lived under the tyranny of self-managed systems. Engines like Vertica(https://en.wikipedia.org/wiki/Vertica) or ...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Big-Query.md" class="post-title">Big query</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">During the 2000s, if you were a data engineer at the epicenter of technology, the conventional wisdom was absolute: SQL does not scale. At that time, ...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Apache-Hudi.md" class="post-title">Apache hudi</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">For years, traditional Data Lakes' biggest dilemma wasn't storage volume, but the immutability of their components. Updating a single record in a Parq...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_From-Monolith-to-Lakehouse.md" class="post-title">From monolith to lakehouse</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">For decades, the engineering world relied on centralized monolithic systems: black boxes where storage and compute were welded together. In the 90s, t...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Duck-DB.md" class="post-title">Duck db</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">As data architects, we’ve all felt the friction: you have a multi-gigabyte Parquet file on S3 or a massive CSV on your local drive, and you just need ...</p>
+                        </div>
+                        <span class="post-date">May 06, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
                             <a href="posts/ingenieria-datos_Optimization-in-Apache-Spark--Shuffle-partitions.md" class="post-title">Optimization in apache spark: Shuffle partitions</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">YouYou've designed a robust architecture, deployed a cluster with hundreds of cores, and configured executors with ample memory. However, when monitor...</p>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">You may have designed a robust architecture with hundreds of cores and ample memory, yet execution times remain stagnant while monitoring reveals a fr...</p>
                         </div>
-                        <span class="post-date">April 29, 2026</span>
+                        <span class="post-date">May 05, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas copy 2.md" class="post-title">Introduccion distribuciones estadisticas copy 2</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                            <a href="posts/ingenieria-datos_spark-query-plan.md" class="post-title">Spark query plan</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Before moving a single byte, Spark transforms your code through a logical and physical assembly line known as the Catalyst Optimizer(https://www.datab...</p>
                         </div>
-                        <span class="post-date">April 04, 2026</span>
+                        <span class="post-date">May 05, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/ingenieria-datos_introduccion-distribuciones-estadisticas.md" class="post-title">Introduccion distribuciones estadisticas</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                            <a href="posts/ingenieria-datos_Delta-lake.md" class="post-title">Delta lake</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">Delta Lake represents the evolution of storage towards self-management and optimized performance, originally conceived to provide Apache Spark with th...</p>
                         </div>
-                        <span class="post-date">April 04, 2026</span>
+                        <span class="post-date">May 04, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/ingenieria-datos_Apache-Iceberg.md" class="post-title">Apache iceberg</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">If Hudi is the transactional engine, Apache Iceberg(https://iceberg.apache.org/) represents the pinnacle of architectural abstraction. Developed by Ne...</p>
+                        </div>
+                        <span class="post-date">May 04, 2026</span>
                     </li>
 
                 </ul>
@@ -132,26 +228,18 @@
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/historia-colombia_otro.md" class="post-title">Otro</a>
-                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
-                        </div>
-                        <span class="post-date">April 04, 2026</span>
-                    </li>
-
-                    <li class="post-item">
-                        <div>
                             <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas copy 2.md" class="post-title">Introduccion distribuciones estadisticas copy 2</a>
                             <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
                         </div>
-                        <span class="post-date">April 04, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
                         <div>
-                            <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas copy.md" class="post-title">Introduccion distribuciones estadisticas copy</a>
+                            <a href="posts/historia-colombia_otro.md" class="post-title">Otro</a>
                             <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
                         </div>
-                        <span class="post-date">April 04, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                     <li class="post-item">
@@ -159,7 +247,15 @@
                             <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas.md" class="post-title">Introduccion distribuciones estadisticas</a>
                             <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
                         </div>
-                        <span class="post-date">April 04, 2026</span>
+                        <span class="post-date">May 14, 2026</span>
+                    </li>
+
+                    <li class="post-item">
+                        <div>
+                            <a href="posts/historia-colombia_introduccion-distribuciones-estadisticas copy.md" class="post-title">Introduccion distribuciones estadisticas copy</a>
+                            <p style="margin: 8px 0; color: #666; font-size: 14px;">En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.</p>
+                        </div>
+                        <span class="post-date">May 14, 2026</span>
                     </li>
 
                 </ul>
