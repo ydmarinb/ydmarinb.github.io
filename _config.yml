@@ -1,8 +1,8 @@
 # Basic Configuration
 url: "https://ydmarinb.github.io"
 baseurl: ""
-title: "ydmarinb Analytics Blog"
-description: "Data Engineering, Statistics & Colombian History"
+title: "Yubar Daniel Marín Benjumea - Data Architect"
+description: "Data Architecture, Data Engineering, Statistics & Colombian History"
 
 # Collections
 collections:
