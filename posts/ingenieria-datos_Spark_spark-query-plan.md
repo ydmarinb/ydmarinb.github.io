@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Spark query plan"
+date: 2026-05-05T17:25:01.781545
+category: ingenieria-datos
+subtopic: "Spark"
+---
+
 Before moving a single byte, Spark transforms your code through a logical and physical assembly line known as the [Catalyst Optimizer](https://www.databricks.com/blog/what-is-catalyst-optimizer). This process begins with an **Unresolved Logical Plan**, where Spark merely verifies syntax. Once passed to the **Analyzed Logical Plan**, the engine consults the Catalog to verify that tables and columns exist and that data types are compatible. The real magic occurs in the **Optimized Logical Plan**, where Catalyst applies rule-based optimizations—such as constant folding and filter reordering—to maximize efficiency. Finally, Spark generates multiple **Physical Plans**, selecting the most resource-efficient strategy through an internal cost model before distributing tasks to executors.
 
 

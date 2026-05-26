@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Data vault"
+date: 2026-05-13T18:36:24.470575
+category: ingenieria-datos
+subtopic: "Data modeling"
+---
+
 For the modern data engineer, business evolution is often synonymous with a technical nightmare. Traditional architectures, while robust in their time, now act as anchors that stall innovation. [**3NF (Third Normal Form)**](https://youtu.be/GFQaEYEc8_8?si=pS6FgOqNUVTg8QY8) models suffer from complex primary keys that generate cascading snapshots at any modification, while [**Dimensional Star Schemas**](https://www.snowflake.com/en/fundamentals/star-schema/) prove extremely difficult to restructure when granularity requirements change in fact tables. As strategists, we cannot allow infrastructure to dictate the speed of business. This is where [**Data Vault 2.0**](https://www.snowflake.com/en/developers/guides/vhol-data-vault/) positions itself not just as a modeling technique, but as the definitive architecture for enterprise agility. It is a hybrid solution that empowers organizations to integrate data at a massive scale, maintaining flexibility and consistency in distributed cloud environments.
 
 The Data Vault methodology is the result of decades of optimization, starting with [**Dan Linstedt’s**](https://www.linkedin.com/in/dlinstedt/) research in 1990. However, the true quantum leap occurred in 2014 with the introduction of Data Vault 2.0, designed specifically for today’s Big Data ecosystem and platforms like [**Snowflake**](https://www.snowflake.com/). The architecture is founded on three granular structures that separate identity from relationship and context: **Hubs** (unique records of Business Keys), **Links** (representing transactions and relations between Hubs), and **Satellites** (containing historical descriptive data). A key architectural insight is that an expert will always model a Link even for 1:1 relations; if business rules change tomorrow to 1:M, the model remains intact, avoiding costly re-engineering. This separation allows the model to grow organically by simply "hooking" new sources without altering existing structures.

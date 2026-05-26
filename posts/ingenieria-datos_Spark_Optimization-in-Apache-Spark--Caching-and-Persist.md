@@ -1,4 +1,12 @@
-Spark does not execute transformations the moment they are programmed; instead, it waits until the very last second to compute the entire graph of operations through [Lazy Evaluation](https://www.dremio.com/wiki/lazy-evaluation/). While this allows for global optimizations, it carries a hidden cost: without an explicit storage instruction, Spark does not "remember" the intermediate results of a base DataFrame ($DF_{base}$). If this base serves as the root for multiple downstream processes ($$DF_1$$ and $DF_2$), Spark will regenerate the entire lineage from the data source for every action, repeating city filters or complex `CASE WHEN` logic over and over. It is the architectural difference between cooking an ingredient once for several dishes or peeling the same onion every time you change a recipe, unnecessarily paying for the same CPU cycles and network bandwidth.
+---
+layout: post
+title: "Optimization in apache spark: Caching and persist"
+date: 2026-05-23T21:41:12.319793
+category: ingenieria-datos
+subtopic: "Spark"
+---
+
+Spark does not execute transformations the moment they are programmed; instead, it waits until the very last second to compute the entire graph of operations through [Lazy Evaluation](https://rajanand.org/glossary/lazy-evaluation). While this allows for global optimizations, it carries a hidden cost: without an explicit storage instruction, Spark does not "remember" the intermediate results of a base DataFrame ($DF_{base}$). If this base serves as the root for multiple downstream processes ($$DF_1$$ and $DF_2$), Spark will regenerate the entire lineage from the data source for every action, repeating city filters or complex `CASE WHEN` logic over and over. It is the architectural difference between cooking an ingredient once for several dishes or peeling the same onion every time you change a recipe, unnecessarily paying for the same CPU cycles and network bandwidth.
 
 
 

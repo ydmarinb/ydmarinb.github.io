@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Redshift"
+date: 2026-05-14T19:32:38.589410
+category: ingenieria-datos
+subtopic: "Modern Data Warehouses"
+---
+
 In 2010, Amazon Web Services (AWS) stood at a crossroads that would define the future of cloud analytics. The company desperately needed a [Data Warehouse](https://en.wikipedia.org/wiki/Data_warehouse) for OLAP workloads, but the market was consolidating rapidly: HP had acquired [Vertica](https://en.wikipedia.org/wiki/Vertica), EMC took [Greenplum](https://en.wikipedia.org/wiki/Greenplum), and Microsoft bought [Data Allegro](https://en.wikipedia.org/wiki/DATAllegro). [ParAccel](https://en.wikipedia.org/wiki/ParAccel) was effectively the "last one at the party" without a partner. Instead of a traditional acquisition, Amazon executed what CMU Professor Andy Pavlo calls a "gangster move": they invested in ParAccel in exchange for a perpetual license of its source code—an optimized fork of [PostgreSQL](https://www.postgresql.org/). While competitors spent hundreds of millions on entire companies, Amazon secured the core technology for what is now [Amazon Redshift](https://aws.amazon.com/redshift/) for just $20 million. This allowed AWS to dominate the cloud OLAP market while its rivals were still struggling to integrate their expensive acquisitions.
 
 As an architectural marvel, Redshift tackles the overhead of code generation through its **Compilation as a Service (CaaS)** model. Unlike systems that suffer from the latency of standard compilers like GCC, Redshift performs a source-to-source transpilation of query plans into C++ code, which is then compiled into highly optimized binaries. To ensure this doesn't degrade the user experience, it employs a dual-layered caching system: a **Local Cache** with a $99.95\%$ hit rate and a **Global Cache** that resolves $87\%$ of local misses across the entire fleet. This allows for the injection of [SIMD](https://www.youtube.com/watch?v=YuUMCVX3UVE) via AVX2 Intrinsics and software prefetching directly into scan loops, enabling native execution speeds without the "compilation tax" usually associated with JIT engines.

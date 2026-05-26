@@ -293,6 +293,7 @@ blockquote {
 /* Tables */
 table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
   display: block; /* Makes wide pandas dataframes scrollable horizontally instead of breaking mobile view */
@@ -574,6 +575,7 @@ pre[class*="language-"] {
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   overflow-x: auto;
+  max-width: 100%;
   color: #ccc;
   border-left: 4px solid var(--primary-color);
 }

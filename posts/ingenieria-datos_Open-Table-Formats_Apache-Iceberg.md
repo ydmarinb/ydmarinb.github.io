@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Apache iceberg"
+date: 2026-05-04T17:28:08.948800
+category: ingenieria-datos
+subtopic: "Open Table Formats"
+---
+
 If Hudi is the transactional engine, Apache [Iceberg](https://iceberg.apache.org/) represents the pinnacle of architectural abstraction. Developed by Netflix to overcome Hive's performance limitations on tables with millions of files, Iceberg starts from a radical premise: the user and the query engine should not know, or worry, about the physical structure of files on disk. Its architecture is based on a metadata hierarchy that completely decouples the logical schema from physical storage through a tree of Snapshots, Manifest Lists, and Manifest Files.
 
 The biggest bottleneck in the cloud is the LIST operation on S3, which is slow and costly. Iceberg eliminates this need through the [Manifest of Files](https://dev.to/alexmercedcoder/understanding-the-apache-iceberg-manifest-file-581d), an exact inventory of every file that makes up a table. But its greatest contribution to efficiency is [Manifest Caching](https://www.cloudera.com/blog/technical/12-times-faster-query-planning-with-iceberg-manifest-caching-in-impala.html). By keeping this inventory in the query engine's memory, Iceberg can perform query planning in milliseconds, discarding irrelevant files long before touching storage. Added to this is Hidden Partitioning, a gem of usability and performance. In older formats, the engineer had to manually create partition columns, and the user had to remember them. Iceberg intercepts native queries (e.g., a timestamp) and automatically translates them into the underlying partition structure. This layer of abstraction allows for [Partition Evolution](https://dev.to/alexmercedcoder/apache-iceberg-table-optimization-8-hidden-pitfalls-compaction-and-partition-evolution-in-13f1): you can change your data organization strategy today without having to historically rewrite the last five years of telemetry.

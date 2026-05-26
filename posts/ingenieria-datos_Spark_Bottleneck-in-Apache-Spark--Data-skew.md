@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Bottleneck in apache spark: Data skew"
+date: 2026-05-14T19:32:38.590006
+category: ingenieria-datos
+subtopic: "Spark"
+---
+
 Before version 3.0, Spark operated with static execution plans: once the optimizer defined the processing path, the plan was immutable regardless of the surprises the data held on disk. [Adaptive Query Execution (AQE)](https://www.databricks.com/blog/2020/05/29/adaptive-query-execution-speeding-up-spark-sql-at-runtime.html) fundamentally changes this paradigm, acting as Spark's central nervous system by using runtime statistics to dynamically adjust the execution plan. Instead of blindly following a theoretical model, Spark observes real-time metrics—such as bytes read and actual partition sizes—to "learn" during execution and reoptimize the query. This shifts the engine from a "guess-and-execute" approach to a reactive system that understands the real data it is handling at every stage.
 
 

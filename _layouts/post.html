@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="layout-post" style="font-family: 'Inter', 'Roboto', sans-serif; font-size: 16px; line-height: 1.7; color: #333; max-width: 900px; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(15px, 4vw, 20px);">
+  <article>
+    <header style="margin-bottom: 40px; border-bottom: 2px solid var(--primary-color); padding-bottom: 20px; text-align: center;">
+      <h1 style="color: var(--primary-color); font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 10px; word-wrap: break-word;">{{ page.title }}</h1>
+      {% if page.date %}
+      <p style="color: #666; font-style: italic; font-size: 0.95rem;">
+        {{ page.date | date: "%B %d, %Y" }}
+      </p>
+      {% endif %}
+    </header>
+    <div class="content">
+      {{ content }}
+    </div>
+  </article>
+</div>

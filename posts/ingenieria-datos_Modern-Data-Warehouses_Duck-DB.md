@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Duck db"
+date: 2026-05-06T19:33:54.438242
+category: ingenieria-datos
+subtopic: "Modern Data Warehouses"
+---
+
 As data architects, we’ve all felt the friction: you have a multi-gigabyte Parquet file on S3 or a massive CSV on your local drive, and you just need a quick aggregation. Your options? Either suffer through the memory-hungry slowness of Pandas or pay the "infrastructure tax" of a traditional database. Spinning up a Postgres container or a cloud warehouse like Snowflake for a local task feels like killing a fly with a cannon. This is where [**DuckDB**](https://duckdb.org/) enters the stage. It is the missing link—an in-process, high-performance [**OLAP**](https://en.wikipedia.org/wiki/Online_analytical_processing) engine that brings the power of a modern warehouse to your local script or browser.
 
 DuckDB’s brilliance lies in its refusal to accept network latency as the status quo. Born at [**CWI**](https://www.cwi.nl/) (Centrum Wiskunde & Informatica), it was designed to solve the overhead of setting up and accessing data. After realizing that [MonetDB](https://www.monetdb.org/) had too much legacy baggage to be truly embedded, the team wrote DuckDB from scratch in 2019 using clean C++. As an **in-process** database, it lives within the same memory address space as your application (Python, R, or the browser via WASM). It aims for the same ubiquity as [**SQLite**](https://www.sqlite.org/index.html)—found in phones, satellites, and planes—but optimized for heavy analytical workloads.

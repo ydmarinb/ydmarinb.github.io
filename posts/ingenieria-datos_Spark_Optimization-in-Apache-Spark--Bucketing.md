@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Optimization in apache spark: Bucketing"
+date: 2026-05-14T19:32:38.590805
+category: ingenieria-datos
+subtopic: "Spark"
+---
+
 The "Shuffle" remains the silent culprit behind processes that take hours instead of minutes, but Bucketing offers a strategic optimization to transform network chaos into fluid, local execution. By organizing data into manageable chunks based on [hash values](https://www.huntress.com/cybersecurity-101/topic/what-is-hash-value), Spark can "know" in advance where data resides. This is a superior alternative to partitioning [high-cardinality columns](https://www.datacamp.com/tutorial/cardinality) (like product_id), which often triggers the dreaded [Small File Problem](https://www.youtube.com/watch?v=SPKEEapQ4Rg). From an architectural perspective, creating thousands of tiny directories for each unique ID forces an enormous metadata management overhead on the distributed file system, whereas bucketing maintains a fixed number of files within the same directory, providing a logical structure that prevents metadata collapse.
 
 The architecture of bucketing is built on a fundamental premise: invest time during the write phase to gain massive dividends during the read phase. When writing data, Spark applies a [hash function](https://www.geeksforgeeks.org/dsa/hash-functions-and-list-types-of-hash-functions/) to the chosen column and uses a modulo operation to assign each row to its exact bucket. This pre-organization is considered the "Holy Grail" of performance because it allows the physical execution plan to bypass the most costly steps. In the [Directed Acyclic Graph (DAG)](https://www.geeksforgeeks.org/dsa/introduction-to-directed-acyclic-graph/), the Exchange ([Shuffle](https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Shuffle-partitions/)) node completely disappears; since keys are already co-located on the correct executors, there is no need for network movement. Furthermore, the Sort scope is reduced to individual buckets, and the Join becomes a local, low-memory operation, which is particularly powerful for master datasets that are joined repeatedly across different pipelines.

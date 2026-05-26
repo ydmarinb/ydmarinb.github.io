@@ -1,3 +1,11 @@
+---
+layout: post
+title: "One big table"
+date: 2026-05-13T18:43:21.021064
+category: ingenieria-datos
+subtopic: "Data modeling"
+---
+
 For any data analyst, "JOIN hell" is familiar territory: navigating Byzantine star schemas, tracing foreign keys through fragmented dimensions, and writing hundreds of lines of SQL just to get a basic business metric. During decades, **[Ralph Kimball’s dimensional modeling (1996)](https://ydmarinb.github.io/data-engineering/Data-modeling/Kimball/)** was the gold standard, born in an era where storage was a prohibitive luxury and compute was shackled to limited local hardware. However, we are witnessing a structural decoupling between storage and compute that makes normalization rules look like relics. With the advent of cloud data warehouses and **[Columnar Processing](https://docs.aws.amazon.com/redshift/latest/dg/c_columnar_storage_disk_mem_mgmnt.html)**, extreme denormalization—or **"One Big Table" (OBT)**—has moved from a "bad practice" to a deliberate architectural strategy.
 
 The choice is not a matter of architectural faith, but of economic and technical pragmatism. The priority has shifted from "saving every byte" to **"minimizing user latency."** In an environment of massive, cheap storage, OBT acts as an optimized consumption layer that abstracts the complexity of underlying relationships. The technical advantage of OBT lies in minimizing network communication or **shuffling** (the movement of data between nodes), localizing information for massive parallel execution.

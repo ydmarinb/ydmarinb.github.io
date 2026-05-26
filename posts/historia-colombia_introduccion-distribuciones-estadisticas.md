@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Introduccion distribuciones estadisticas"
+date: 2026-05-14T19:32:38.587916
+category: historia-colombia
+subtopic: "General"
+---
+
 # Introducción a Distribuciones Estadísticas
 
 En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.

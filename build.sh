@@ -172,6 +172,17 @@ for category in os.listdir(NOTEBOOKS_DIR):
                     title = get_notebook_title(nb_path)
                     preview = extract_first_paragraph(md_path)
                     
+                    # Inject YAML Front Matter
+                    try:
+                        with open(md_path, 'r', encoding='utf-8') as f:
+                            md_content = f.read()
+                        title_safe = title.replace('"', '\\"')
+                        yfm = f"---\nlayout: post\ntitle: \"{title_safe}\"\ndate: {file_date.isoformat()}\ncategory: {category}\nsubtopic: \"{subtopic}\"\n---\n\n"
+                        with open(md_path, 'w', encoding='utf-8') as f:
+                            f.write(yfm + md_content)
+                    except Exception as e:
+                        print(f"Warning: Could not inject YFM in {md_path}: {e}")
+                    
                     posts_by_category[category].append({
                         'title': title,
                         'date': file_date,

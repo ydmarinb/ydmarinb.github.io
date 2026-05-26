@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Inmon"
+date: 2026-05-13T12:16:32.137110
+category: ingenieria-datos
+subtopic: "Data modeling"
+---
+
 In the 1960s and 70s, the corporate world rushed into a digital frontier without a compass, leading to applications growing like "weeds in spring." This proliferation of silos generated multiple versions of the truth, turning data into a labyrinth of inconsistencies. In 1992, [William H. Inmon](https://en.wikipedia.org/wiki/Bill_Inmon) transformed this disorder into strategic infrastructure with his seminal work, *Building the Data Warehouse*. His legacy is not a relic; it is the anchor preventing modern information ecosystems from drifting into chaos. At its core, an Inmon [Data Warehouse](https://en.wikipedia.org/wiki/Data_warehouse) is a subject-oriented, integrated, non-volatile, and time-variant collection of data. Integration is the most vital characteristic: it standardizes data from heterogeneous sources to ensure a "Single Source of Truth." By maintaining a non-volatile and time-variant spectrum (typically 5 to 10 years), the warehouse provides a stable foundation for historical analysis, allowing the past to act as a predictor for the future.
 
 

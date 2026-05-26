@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Delta lake"
+date: 2026-05-04T17:40:04.680837
+category: ingenieria-datos
+subtopic: "Open Table Formats"
+---
+
 Delta Lake represents the evolution of storage towards self-management and optimized performance, originally conceived to provide Apache Spark with the [ACID](https://www.youtube.com/watch?v=Sahvj-0UYxM) capabilities it lacked for mission-critical applications. Its architecture revolves around the Delta Log, a centralized transaction log in JSON format that acts as the heart of the system. Every change, every insertion, and every optimization is recorded in this log before being applied, ensuring that an operation either completes entirely or not at all, eliminating the risk of partial or corrupt data due to infrastructure failures.
 
 For an architect, the differentiating value of Delta lies in how it manages the physical health of the table without manual intervention. Its [Z-Ordering](https://delta.io/blog/2023-06-03-delta-lake-z-order/) technique was the first step, using multidimensional sorting algorithms to group related data into the same files. However, its true current innovation is [Liquid Clustering](https://delta.io/blog/liquid-clustering/). Unlike traditional partitioning, which is rigid and leads to over-partitioning issues, Liquid Clustering is dynamic. You define the key columns for your business, and the system incrementally reorganizes the data according to how it is being queried. It's a "smart shelf" that rearranges itself: as new data arrives, Delta groups it into optimal clusters, allowing for massive Data Skipping. The engine reads metadata statistics and discards 99% of files without opening them, achieving BI response speeds previously only possible with proprietary engines.

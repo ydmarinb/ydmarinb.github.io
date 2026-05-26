@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Apache hudi"
+date: 2026-05-06T19:58:08.452179
+category: ingenieria-datos
+subtopic: "Open Table Formats"
+---
+
 For years, traditional Data Lakes' biggest dilemma wasn't storage volume, but the immutability of their components. Updating a single record in a Parquet file ecosystem was like trying to correct a typo in an already printed book: the only option was to reprint the entire chapter. [Apache Hudi (Hadoop Upserts Deletes and Incrementals)](https://hudi.apache.org/)was born precisely to transform this passive storage into a Data Lakehouse Management System (DLMS), injecting relational database semantics directly onto S3 or HDFS.
 
 The core of Hudi is its Timeline, a chronological record of every action (commits, compactions, cleanups) that acts as the single source of truth. This structure enables [Non-Blocking Concurrency Control (NBCC)](https://hudi.apache.org/blog/2024/12/06/non-blocking-concurrency-control/), a critical innovation for high-availability architectures. Unlike other formats that lock the entire table or fail if two processes intersect, NBCC allows ingestion "writers" to continue adding data while maintenance services, like compaction, reorganize files in the background. It's like an industrial kitchen: NBCC allows chefs to keep preparing dishes (ingestion) while the cleaning crew organizes the pantry (maintenance), without anyone having to stop and wait for the other.

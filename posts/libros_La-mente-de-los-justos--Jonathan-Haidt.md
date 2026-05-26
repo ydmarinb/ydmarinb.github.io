@@ -1,3 +1,11 @@
+---
+layout: post
+title: "La mente de los justos  Jonathan Haidt"
+date: 2026-04-07T18:01:01.342791
+category: libros
+subtopic: "General"
+---
+
 En este espacio recopilo las ideas principales de *La mente de los justos*, un libro fundamental para entender por qué las personas buenas se dividen por la política y la religión. El autor desmitifica la idea de que somos seres puramente racionales y explora cómo la evolución, la intuición y la pertenencia a un grupo moldean nuestra moralidad.
 
 ### 1. La primacía de la intuición sobre la razón (Sesgos y Decisiones)

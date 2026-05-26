@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Snowflake"
+date: 2026-05-06T21:11:46.177037
+category: ingenieria-datos
+subtopic: "Modern Data Warehouses"
+---
+
 In the early 2000s, the data industry lived under the tyranny of self-managed systems. Engines like [Vertica](https://en.wikipedia.org/wiki/Vertica) or [Greenplum](https://en.wikipedia.org/wiki/Greenplum) were powerful, but they were shackled to physical racks and the grueling manual labor of DBA armies. Scaling was a provisioning nightmare that took months. Even with the rise of Hadoop in 2010, forcing SQL to run over the complexity of HDFS proved to be a patch, not a solution. While others tried to "re-skin" legacy architectures to look like the cloud, [**Snowflake**](https://www.snowflake.com/en/) emerged with a provocative question: What if we built a DBMS from the first bit specifically for cloud elasticity? It wasn’t an evolution of PostgreSQL or a fork of Hadoop; it was a clean-slate design created to dominate a market that no longer tolerated hardware rigidity.
 
 

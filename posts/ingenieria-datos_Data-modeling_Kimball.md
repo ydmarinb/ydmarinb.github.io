@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Kimball"
+date: 2026-05-13T18:38:53.255077
+category: ingenieria-datos
+subtopic: "Data modeling"
+---
+
 In today's enterprise ecosystem, organizations possess "mountains of data" but often face a strategic disconnect between information capture and timely decision-making. [Ralph Kimball's](https://en.wikipedia.org/wiki/Ralph_Kimball) methodology isn't just about organizing bits; it is about transforming operational chaos into a business compass through legibility and simplicity. As Kimball himself noted, sophistication lies not in the complexity of the schema, but in its legibility: "Simplicity is the fundamental key that allows users to understand databases easily and software to navigate them efficiently."
 
 Architects must respect the dichotomy between [**OLTP (Online Transactional Processing)**](https://en.wikipedia.org/wiki/Online_transaction_processing) and [**OLAP (Online Analytical Processing)**](https://en.wikipedia.org/wiki/Online_analytical_processing). Operational systems are where data "enters" to turn the wheels of the business—processing one transaction at a time. The Data Warehouse is where data "exits" to observe how those wheels turn, analyzing millions of records to find patterns. A common critical error is assuming that a mirror copy of an operational system constitutes a functional DW. Without a dedicated architecture, analysts become involuntary "Black Belt VLOOKUP Ninjas," wasting strategic time on manual data preparation.

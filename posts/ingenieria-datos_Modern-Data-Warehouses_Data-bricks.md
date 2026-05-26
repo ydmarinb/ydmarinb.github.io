@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Data bricks"
+date: 2026-05-14T19:32:38.588908
+category: ingenieria-datos
+subtopic: "Modern Data Warehouses"
+---
+
 In the grand narrative of distributed systems, there is an irony every senior architect appreciates: Apache Spark was born as the high-performance successor to Hadoop, designed to transcend the limitations of MapReduce. By choosing Scala and the Java Virtual Machine (JVM), Spark gained expressivity and speed, but a decade later, it hit an invisible wall. The system that freed Big Data from the tyranny of the disk ended up suffocated by the very language that gave it life. This led to the birth of [**Photon**](https://www.databricks.com/product/photon), a native execution engine designed to resolve the "JVM tax" by integrating a C++ heart into a Java-based ecosystem.
 
 

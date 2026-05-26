@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Otro"
+date: 2026-05-14T19:32:38.588064
+category: historia-colombia
+subtopic: "Medellin copy"
+---
+
 # Introducción a Distribuciones Estadísticas
 
 En este post exploramos las distribuciones de probabilidad más comunes y su aplicación en análisis de datos.

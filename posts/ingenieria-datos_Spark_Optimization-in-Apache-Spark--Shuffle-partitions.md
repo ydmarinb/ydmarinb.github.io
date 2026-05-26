@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Optimization in apache spark: Shuffle partitions"
+date: 2026-05-05T19:56:43.549717
+category: ingenieria-datos
+subtopic: "Spark"
+---
+
 You may have designed a robust architecture with hundreds of cores and ample memory, yet execution times remain stagnant while monitoring reveals a frustrating reality: a large number of idle cores. This resource underutilization is often traced back to the [Shuffle](https://www.youtube.com/watch?v=q1LtBU_ca20), the "matchmaker" of Spark architecture. Shuffling is the process by which Spark reorganizes data during wide transformations—such as `join` or `groupBy`—to ensure related records are co-located. However, moving data between executors is the most expensive operation due to serialization costs and network latency. The efficiency of this process is dictated by **Shuffle Partitions**, and relying on the default value of `spark.sql.shuffle.partitions = 200` is frequently a production "performance killer."
 
 

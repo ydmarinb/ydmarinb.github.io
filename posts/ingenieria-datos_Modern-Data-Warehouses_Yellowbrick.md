@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Yellowbrick"
+date: 2026-05-06T21:24:57.542662
+category: ingenieria-datos
+subtopic: "Modern Data Warehouses"
+---
+
 Despite massive CPUs and ultra-fast [NVMe](https://es.wikipedia.org/wiki/NVM_Express) drives, most databases eventually hit an "invisible wall" of performance. [Yellowbrick](https://yellowbrick.com/) was born from a radical philosophy: the culprit is the Operating System. To truly scale, software shouldn't collaborate with the kernel; it should bypass it entirely. For a Systems Architect, a general-purpose OS is a layer of friction—a mess of context switches and redundant memory copies. Yellowbrick adopts a ["unikernel-like"](https://www.youtube.com/watch?v=9PRKBZHArhI) approach: upon booting, it makes only 6 to 10 system calls to secure memory and install its own drivers. After that, it simply stops talking to Linux. This "Hardware-Defined Software" strategy ensures the database engine has total control over the silicon without intermediaries. As its design principles dictate: "Remember that the OS is our enemy."
 
 
