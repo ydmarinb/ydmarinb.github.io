@@ -207,7 +207,6 @@ html_content = '''<!DOCTYPE html>
     <meta name="description" content="Blog - Articles on Data Engineering, Statistics & Colombian History">
     <title>Blog - ydmarinb</title>
     <link rel="stylesheet" href="/assets/style.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
     MathJax = {
       tex: {
