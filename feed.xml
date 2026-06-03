@@ -1,0 +1,330 @@
+---
+layout: none
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Yubar Daniel Marín Benjumea - Data Architecture Blog</title>
+    <link>https://ydmarinb.github.io/</link>
+    <description>Data Architect & Senior Data Engineer. Technical articles on Snowflake, Databricks, AWS, dbt, Data Lakehouse, Apache Spark, and modern data platform engineering.</description>
+    <language>en-US</language>
+    <managingEditor>danielmarinbe@gmail.com (Yubar Daniel Marín Benjumea)</managingEditor>
+    <webMaster>danielmarinbe@gmail.com (Yubar Daniel Marín Benjumea)</webMaster>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <atom:link href="https://ydmarinb.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <ttl>1440</ttl>
+
+    <!-- Data Engineering Posts -->
+    <item>
+      <title>Spark Query Plan - Catalyst Optimizer &amp; Execution Pipeline</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/spark-query-plan/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/spark-query-plan/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Deep dive into Spark's Catalyst Optimizer, predicate pushdown, shuffle operations, and Adaptive Query Execution (AQE). Learn how Spark transforms your code through logical and physical planning.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Optimization - Broadcast Joins and AQE</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Broadcast-Joins-and-AQE/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Broadcast-Joins-and-AQE/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Master Broadcast Joins and Adaptive Query Execution in Apache Spark. Learn when to broadcast, how AQE runtime optimization works, and strategies for handling data skew.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Optimization - Bucketing</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Bucketing/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Bucketing/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Learn how Bucketing in Apache Spark organizes data for optimized joins and aggregations. Understand the trade-offs between fileCount, numBuckets, and sorting for your data patterns.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Optimization - Caching and Persist</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Caching-and-Persist/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Caching-and-Persist/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Master Apache Spark memory management with CACHE and PERSIST. Learn about StorageLevel options, MEMORY_AND_DISK strategies, and when caching improves vs hurts performance.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Optimization - Partitioning</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Partitioning/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Partitioning/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Understand Spark partitioning strategies for optimal parallel processing. Learn the difference between coalesce and repartition, and how partition count affects cluster utilization.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Optimization - Shuffle Partitions</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Shuffle-partitions/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Optimization-in-Apache-Spark--Shuffle-partitions/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Deep dive into Spark shuffle operations and partition configuration. Learn how to optimize network I/O, reduce spill, and tune spark.sql.shuffle.partitions for your workload.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Apache Spark Bottleneck - Data Skew</title>
+      <link>https://ydmarinb.github.io/data-engineering/Spark/Bottleneck-in-Apache-Spark--Data-skew/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Spark/Bottleneck-in-Apache-Spark--Data-skew/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Diagnosing and solving Data Skew in Apache Spark. Learn how uneven data distribution causes task imbalance, strategies to detect skewness, and techniques like salting and adaptive coalescing.]]></description>
+      <category>Data Engineering</category>
+      <category>Apache Spark</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Data Modeling - Kimball Methodology</title>
+      <link>https://ydmarinb.github.io/data-engineering/Data-modeling/Kimball/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Data-modeling/Kimball/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Master the Kimball methodology for dimensional modeling. Learn about fact tables, dimension tables, star schemas, and the bus matrix architecture for enterprise data warehousing.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Modeling</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Data Modeling - Inmon Methodology</title>
+      <link>https://ydmarinb.github.io/data-engineering/Data-modeling/Inmon/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Data-modeling/Inmon/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore the Inmon methodology - Corporate Information Factory (CIF). Learn about 3NF normalized data marts, the differences from Kimball, and when to choose Inmon for enterprise data architecture.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Modeling</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Data Modeling - Data Vault</title>
+      <link>https://ydmarinb.github.io/data-engineering/Data-modeling/Data-vault/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Data-modeling/Data-vault/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Learn Data Vault 2.0 modeling for scalable, auditable data warehouses. Understand Hubs, Links, and Satellites, and how this approach enables parallel loading and trackability.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Modeling</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Data Modeling - One Big Table (OBT)</title>
+      <link>https://ydmarinb.github.io/data-engineering/Data-modeling/One-big-table/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Data-modeling/One-big-table/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore the One Big Table (OBT) denormalization pattern for modern data platforms. Learn when OBT makes sense vs normalized models, and the trade-offs with storage and query performance.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Modeling</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Modern Data Warehouse - Snowflake</title>
+      <link>https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Snowflake/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Snowflake/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Deep dive into Snowflake architecture: multi-cluster shared data, automatic scaling, time travel, and zero-copy cloning. Learn when Snowflake is the right choice for your data platform.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Warehouse</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Modern Data Warehouse - Google BigQuery</title>
+      <link>https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Big-Query/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Big-Query/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore Google BigQuery's serverless architecture, separation of storage and compute, and native ML integrations. Learn about partition clustering and cost optimization strategies.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Warehouse</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Modern Data Warehouse - Amazon Redshift</title>
+      <link>https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Redshift/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Redshift/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Learn Amazon Redshift architecture with RA3 nodes, Spectrum for query federation, and Redshift Serverless. Compare with Snowflake and understand when Redshift fits your enterprise.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Warehouse</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Modern Data Warehouse - Databricks</title>
+      <link>https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Data-bricks/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Data-bricks/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore Databricks as a unified analytics platform combining data engineering, ML, and SQL warehousing. Learn about Delta Lake, Photon engine, and the Lakehouse paradigm.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Warehouse</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Modern Data Warehouse - DuckDB</title>
+      <link>https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Duck-DB/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Modern-Data-Warehouses/Duck-DB/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Discover DuckDB as an embedded analytical database. Learn about its columnar execution engine, zero-dependency deployment, and when it outperforms traditional data warehouses for analytics.]]></description>
+      <category>Data Engineering</category>
+      <category>Data Warehouse</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Open Table Format - Delta Lake</title>
+      <link>https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Delta-lake/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Delta-lake/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Master Delta Lake - ACID transactions, schema enforcement, time travel, and lakehouse architecture. Learn how Delta Lake bridges the gap between data lakes and data warehouses.]]></description>
+      <category>Data Engineering</category>
+      <category>Open Table Format</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Open Table Format - Apache Iceberg</title>
+      <link>https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Apache-Iceberg/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Apache-Iceberg/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Learn Apache Iceberg table format specification with hidden partitioning, snapshot isolation, and partition evolution. Understand why Iceberg is becoming the standard for large tables.]]></description>
+      <category>Data Engineering</category>
+      <category>Open Table Format</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>Open Table Format - Apache Hudi</title>
+      <link>https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Apache-Hudi/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Open-Table-Formats/Apache-Hudi/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore Apache Hudi for incremental processing and upsert capabilities. Learn about Copy on Write vs Merge on Read tables, and how Hudi enables real-time data pipelines.]]></description>
+      <category>Data Engineering</category>
+      <category>Open Table Format</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Availability</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/Availability/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/Availability/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Learn system design principles for high availability. SLA/SLO/SLI definitions, redundancy strategies, failover patterns, and how to design systems that stay up under failure conditions.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Scalability</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/Scalability/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/Scalability/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Master scalability in distributed systems. Vertical vs horizontal scaling, load balancing, partitioning strategies, and patterns for handling exponential growth in data platforms.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Latency</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/Latency/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/Latency/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Understanding and optimizing latency in data systems. P50/P95/P99 latency percentiles, tail latency problems, caching strategies, and techniques for building low-latency data platforms.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Trade-offs</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/Trade-offs/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/Trade-offs/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Explore fundamental trade-offs in system design. CAP theorem, consistency vs availability, latency vs throughput, and how to make informed architectural decisions for data platforms.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Core Building Blocks</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/Core-Building-Blocks/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/Core-Building-Blocks/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Essential building blocks for data system architecture. Message queues, databases, caches, load balancers, CDNs, and how they combine to build resilient data platforms.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - The Network Layer</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/The-Network-Layer/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/The-Network-Layer/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Deep dive into networking for distributed data systems. TCP/IP, HTTP, gRPC, network topologies, latency sources, and how network design impacts data pipeline performance.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - The Performance Layer</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/The-Performance-Layer/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/The-Performance-Layer/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Performance optimization strategies for data platforms. Profiling, benchmarking, indexing, query optimization, and systematic approaches to identifying and eliminating bottlenecks.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - The Resilience Layer</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/The-Resilience-Layer/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/The-Resilience-Layer/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Building fault-tolerant data systems. Circuit breakers, bulkheads, retry patterns, graceful degradation, and strategies for maintaining data platform reliability under failure conditions.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>System Design - Prevent System Crashes</title>
+      <link>https://ydmarinb.github.io/data-engineering/system-desing/prevent-system-crashes/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/system-desing/prevent-system-crashes/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Strategies for preventing data system failures. Rate limiting, backpressure, chaos engineering, capacity planning, and proactive monitoring to avoid catastrophic system crashes.]]></description>
+      <category>System Design</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+    <item>
+      <title>From Monolith to Lakehouse - Data Architecture Evolution</title>
+      <link>https://ydmarinb.github.io/data-engineering/Data-bases/From-Monolith-to-Lakehouse/</link>
+      <guid isPermaLink="true">https://ydmarinb.github.io/data-engineering/Data-bases/From-Monolith-to-Lakehouse/</guid>
+      <pubDate>Mon, 05 May 2026 17:25:01 +0000</pubDate>
+      <description><![CDATA[Evolution of data architecture from monolithic systems to modern lakehouses. Learn the historical context, architectural shifts, and how we arrived at today's Data Lakehouse paradigm.]]></description>
+      <category>Data Engineering</category>
+      <category>Architecture</category>
+      <author>danielmarinbe@gmail.com</author>
+    </item>
+
+  </channel>
+</rss>

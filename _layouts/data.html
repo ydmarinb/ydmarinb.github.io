@@ -2,19 +2,82 @@
 layout: default
 ---
 <head>
+  <!-- SEO Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yubar Daniel Marín Benjumea">
+  <meta name="robots" content="index, follow">
+
+  <!-- Keywords based on post category and subtopic -->
+  {% if page.category == "ingenieria-datos" %}
+  {% if page.subtopic == "Spark" %}
+  <meta name="keywords" content="Apache Spark, Spark Optimization, Data Engineering, Broadcast Joins, AQE, Partitioning, Bucketing, Data Skew, Catalyst Optimizer, Predicate Pushdown">
+  {% elsif page.subtopic == "Data-modeling" %}
+  <meta name="keywords" content="Data Modeling, Kimball, Inmon, Data Vault, One Big Table, Dimensional Modeling, ETL, Data Warehouse Architecture">
+  {% elsif page.subtopic == "Modern-Data-Warehouses" %}
+  <meta name="keywords" content="Data Warehouse, Snowflake, BigQuery, Redshift, Databricks, DuckDB, Yellowbrick, Cloud Data Platform, ELT, SQL">
+  {% elsif page.subtopic == "Open-Table-Formats" %}
+  <meta name="keywords" content="Delta Lake, Apache Iceberg, Apache Hudi, Open Table Format, Data Lakehouse, ACID Transactions, Schema Evolution">
+  {% elsif page.subtopic == "system-desing" %}
+  <meta name="keywords" content="System Design, Scalability, Availability, Latency, Trade-offs, Distributed Systems, Network Layer, Performance Optimization, Resilience">
+  {% elsif page.subtopic == "Data-bases" %}
+  <meta name="keywords" content="Database Architecture, Data Lakehouse, Monolith to Lakehouse, Modern Data Stack, Data Platform Evolution">
+  {% else %}
+  <meta name="keywords" content="Data Engineering, Data Architecture, ETL, ELT, Cloud Infrastructure, AWS, Statistics">
+  {% endif %}
+  {% else %}
+  <meta name="keywords" content="Data Engineering, Data Architecture, Statistics">
+  {% endif %}
+
+  <!-- Post-specific meta description -->
+  <meta name="description" content="{{ page.title }} - Technical deep dive by Yubar Daniel Marín Benjumea, Data Architect & Senior Data Engineer.">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{{ page.title }} | Yubar Daniel Marín Benjumea">
+  <meta property="og:description" content="{{ page.title }} - Data Engineering technical article by expert Data Architect.">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="{{ page.date }}">
+  <meta property="article:author" content="Yubar Daniel Marín Benjumea">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@ydmarinb">
+  <meta name="twitter:title" content="{{ page.title }} | Data Architect">
+  <meta name="twitter:description" content="{{ page.title }} - Technical article on data engineering by Yubar Daniel Marín Benjumea.">
+
   <!-- LLM / SEO Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "{{ page.title | escape }}",
+    "description": "{{ page.title }} - Technical article on data engineering by Yubar Daniel Marín Benjumea, Data Architect & Senior Data Engineer.",
+    "datePublished": "{{ page.date }}",
+    "dateModified": "{{ page.date }}",
     "url": "{{ site.url }}{{ page.url }}",
     "author": {
       "@type": "Person",
       "name": "Yubar Daniel Marín Benjumea",
-      "jobTitle": "Data Architect",
+      "jobTitle": "Data Architect | Senior Data Engineer",
+      "url": "https://ydmarinb.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/ydmarinb",
+        "https://github.com/ydmarinb"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Yubar Daniel Marín Benjumea",
       "url": "https://ydmarinb.github.io/"
-    }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ site.url }}{{ page.url }}"
+    },
+    "keywords": "{% if page.subtopic %}{{ page.subtopic }}{% endif %}, Data Engineering, Data Architecture"
   }
   </script>
   <!-- MathJax for Formulas -->
